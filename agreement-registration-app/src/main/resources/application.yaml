@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: ${URL:jdbc:postgresql://localhost:5432/AgreementRegistration}
+    username: ${USERNAME:postgres}
+    password: ${PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
