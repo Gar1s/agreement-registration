@@ -6,3 +6,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+security-user:
+  name: ${ADMIN_USERNAME:admin}
+  password: ${ADMIN_PASSWORD:admin}
