@@ -31,6 +31,10 @@
             <groupId>com.eddev</groupId>
             <artifactId>agreement-registration-ui</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.eddev</groupId>
+            <artifactId>agreement-registration-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

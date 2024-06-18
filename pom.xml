@@ -22,6 +22,7 @@
         <module>agreement-registration-management</module>
         <module>agreement-registration-common</module>
         <module>agreement-registration-ui</module>
+        <module>agreement-registration-api</module>
     </modules>
 
     <properties>
@@ -48,6 +49,11 @@
             <dependency>
                 <groupId>com.eddev</groupId>
                 <artifactId>agreement-registration-ui</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.eddev</groupId>
+                <artifactId>agreement-registration-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
