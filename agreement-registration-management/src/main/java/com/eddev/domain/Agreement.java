@@ -1,12 +1,17 @@
 package com.eddev.domain;
 
+import com.eddev.constant.Basis;
+import com.eddev.constant.PracticeType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,8 +39,13 @@ public class Agreement {
     private String studentInitials;
     private Integer year;
     private String speciality;
-    @Lob
-    private byte[] document;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "file_id", referencedColumnName = "id")
+    private File file;
+
+    @ManyToOne//(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id", referencedColumnName = "id")
+    private Company company;
 
 }

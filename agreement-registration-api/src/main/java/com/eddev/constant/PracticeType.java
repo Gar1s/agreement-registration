@@ -1,4 +1,4 @@
-package com.eddev.domain;
+package com.eddev.constant;
 
 public enum PracticeType {
     STUDY,
