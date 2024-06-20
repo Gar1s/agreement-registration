@@ -1,10 +1,8 @@
 <#macro navbar>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid px-5">
-            <a class="navbar-brand m-0">AgreementRegistration</a>
-            <a href="${.globals.baseUrl}/admin/agreements/form" class="navbar-brand m-0">
-                <button type="button" class="btn btn-primary">Додати угоду</button>
-            </a>
+            <a href="/admin/agreements" class="navbar-brand m-0">Реєстр Угод</a>
+            <a href="${.globals.baseUrl}/admin/agreements/create" class="m-0 nav-link">Створення угоди</a>
         </div>
     </nav>
 </#macro>

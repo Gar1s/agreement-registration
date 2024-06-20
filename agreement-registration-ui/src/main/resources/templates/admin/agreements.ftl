@@ -15,16 +15,17 @@
 <body>
 <@navbar.navbar></@navbar.navbar>
 <div class="container col-10">
-    <h2 class="text-center m-4">Всі угоди</h2>
+    <h1 class="text-center my-4">Всі угоди</h1>
     <table class="table text-center m-0">
         <thead>
-        <tr class="fs-5">
+        <tr class="fs-6">
             <th scope="col" class="py-4">#</th>
             <th scope="col" class="py-4">База практики</th>
-            <th scope="col" class="py-4">Назва практики</th>
+            <th scope="col" class="py-4">Вид практики</th>
             <th scope="col" class="py-4">Дата угоди</th>
             <th scope="col" class="py-4">Термін дії</th>
             <th scope="col" class="py-4">Ініціали cтудента</th>
+            <th scope="col" class="py-4"></th>
         </tr>
         </thead>
         <tbody>
@@ -39,6 +40,11 @@
                     ${agreement.endDate.format(.globals.dateFormatter)}
                 </td>
                 <td>${agreement.studentInitials}</td>
+                <td>
+                    <a href="/admin/agreements/${agreement.id}" class="navbar-brand m-0">
+                        <button type="button" class="btn btn-secondary">Більше</button>
+                    </a>
+                </td>
             </tr>
         </#list>
         </tbody>

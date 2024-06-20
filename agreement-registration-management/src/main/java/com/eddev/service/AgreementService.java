@@ -1,12 +1,16 @@
 package com.eddev.service;
 
-import com.eddev.AgreementMapper;
 import com.eddev.api.AgreementApi;
 import com.eddev.domain.Agreement;
+import com.eddev.domain.Company;
 import com.eddev.domain.File;
 import com.eddev.dto.AgreementCreateDto;
 import com.eddev.dto.AgreementDto;
+import com.eddev.dto.AgreementViewDto;
+import com.eddev.mapper.AgreementMapper;
 import com.eddev.repository.AgreementRepository;
+import com.eddev.repository.CompanyRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +22,15 @@ import java.util.List;
 public class AgreementService implements AgreementApi {
 
     private final AgreementRepository agreementRepository;
+    private final CompanyRepository companyRepository;
     private final AgreementMapper agreementMapper;
 
     @Override
     public void save(AgreementCreateDto agreementCreateDto) {
+
+        Company company = companyRepository.findById(agreementCreateDto.getCompanyId())
+                .orElseThrow(() -> new EntityNotFoundException("Company not found"));
+
         Agreement agreement = new Agreement();
         agreement.setBasis(agreementCreateDto.getBasis());
         agreement.setPracticeType(agreementCreateDto.getPracticeType());
@@ -31,6 +40,7 @@ public class AgreementService implements AgreementApi {
         agreement.setStudentInitials(agreementCreateDto.getStudentInitials());
         agreement.setYear(agreementCreateDto.getYear());
         agreement.setSpeciality(agreementCreateDto.getSpeciality());
+        agreement.setCompany(company);
 
         File file = new File();
         try {
@@ -50,6 +60,17 @@ public class AgreementService implements AgreementApi {
         return agreementRepository.findAll().stream()
                 .map(agreementMapper::toDto)
                 .toList();
+    }
+
+    @Override
+    public AgreementViewDto viewById(Long id) {
+        Agreement agreement = findById(id);
+        return agreementMapper.toViewDto(agreement);
+    }
+
+    private Agreement findById(Long id){
+        return agreementRepository.findById(id)
+                .orElseThrow(()->new EntityNotFoundException("Agreement not found!"));
     }
 
 }

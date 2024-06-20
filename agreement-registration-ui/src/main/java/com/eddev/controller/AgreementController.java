@@ -2,11 +2,13 @@ package com.eddev.controller;
 
 import com.eddev.api.AgreementApi;
 import com.eddev.dto.AgreementCreateDto;
+import com.eddev.dto.AgreementViewDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,15 +25,22 @@ public class AgreementController {
         return "admin/agreements";
     }
 
-    @GetMapping("/form")
-    public String get(){
-        return "/admin/form";
+    @GetMapping("/create")
+    public String getCreateForm(){
+        return "admin/agreementForm";
     }
 
     @PostMapping
-    public String post(@ModelAttribute AgreementCreateDto agreementCreateDto){
+    public String create(@ModelAttribute AgreementCreateDto agreementCreateDto){
         agreementApi.save(agreementCreateDto);
         return "redirect:/admin/agreements";
+    }
+
+    @GetMapping("/{id}")
+    public String getById(@PathVariable Long id, Model model){
+        AgreementViewDto dto = agreementApi.viewById(id);
+        model.addAttribute("agreement", dto);
+        return "/admin/agreement";
     }
 
 }

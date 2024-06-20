@@ -2,20 +2,23 @@ package com.eddev.dto;
 
 import com.eddev.constant.Basis;
 import com.eddev.constant.PracticeType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class AgreementCreateDto {
+public class AgreementViewDto {
 
-    private Long companyId;
+    private Long id;
+    @Enumerated(value = EnumType.STRING)
     private Basis basis;
+    @Enumerated(value = EnumType.STRING)
     private PracticeType practiceType;
     private LocalDate agreementDate;
     private LocalDate startDate;
@@ -23,6 +26,8 @@ public class AgreementCreateDto {
     private String studentInitials;
     private Integer year;
     private String speciality;
-    private MultipartFile file;
+    private CompanyViewDto companyViewDto;
+    private Long fileId;
+    private String fileName;
 
 }
