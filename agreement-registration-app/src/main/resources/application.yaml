@@ -6,7 +6,16 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  freemarker:
+    template-loader-path: "classpath:/templates"
+    suffix: ".ftl"
+  servlet:
+    multipart:
+      max-file-size: 200KB
+      max-request-size: 200KB
 
 security-user:
   name: ${ADMIN_USERNAME:admin}
   password: ${ADMIN_PASSWORD:admin}
+
+baseUrl: ${BASE_URL:http://localhost:8080}
