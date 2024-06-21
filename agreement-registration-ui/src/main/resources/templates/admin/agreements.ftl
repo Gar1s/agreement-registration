@@ -34,7 +34,7 @@
                 <th scope="row">${agreement.id}</th>
                 <td><a href="/pdf/${agreement.id}">${agreement.companyName}</a></td>
                 <td>${practiceTypeMap[agreement.practiceType?string]}</td>
-                <td>${agreement.agreementDate.format(.globals.dateFormatter)}</td>
+                <td>${agreement.companyAgreementDate.format(.globals.dateFormatter)}</td>
                 <td>
                     ${agreement.startDate.format(.globals.dateFormatter)}<br>
                     ${agreement.endDate.format(.globals.dateFormatter)}

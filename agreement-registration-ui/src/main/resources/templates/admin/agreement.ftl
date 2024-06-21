@@ -96,7 +96,7 @@
             </div>
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Дата угоди:</p>
-                ${agreement.companyViewDto.agreementDate}
+                ${agreement.companyAgreementDate.format(.globals.dateFormatter)}
             </div>
             <div class="px-2 mt-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Адреса:</p>

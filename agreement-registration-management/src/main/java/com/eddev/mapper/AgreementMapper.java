@@ -11,7 +11,6 @@ import org.mapstruct.MappingTarget;
 @Mapper(componentModel = "spring")
 public interface AgreementMapper {
 
-    @Mapping(target = "agreementDate", source = "company.agreementDate")
     @Mapping(target = "companyName", source = "company.name")
     AgreementDto toDto(Agreement agreement);
 

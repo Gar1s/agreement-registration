@@ -162,9 +162,9 @@
         </div>
 
         <div class="row align-items-center">
-            <label for="agreementDate" class="col-2 p-0">Дата угоди:</label>
+            <label for="companyAgreementDate" class="col-2 p-0">Дата угоди:</label>
             <div class="col p-0">
-                <input type="date" class="form-control" id="agreementDate" name="companyEditDto.agreementDate" value="${agreement.companyViewDto.agreementDate}">
+                <input type="date" class="form-control" id="companyAgreementDate" name="companyAgreementDate" value="${agreement.companyAgreementDate}">
             </div>
         </div>
 

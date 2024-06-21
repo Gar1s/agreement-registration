@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,7 +21,6 @@ public class CompanyEditDto {
     private Basis basis;
     private String position;
     private String initials;
-    private LocalDate agreementDate;
     private String city;
     private String street;
     private String index;

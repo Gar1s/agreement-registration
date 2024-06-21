@@ -15,7 +15,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +33,6 @@ public class Company {
     private Basis basis;
     private String position;
     private String initials;
-    private LocalDate agreementDate;
     private String city;
     private String street;
     private String index;

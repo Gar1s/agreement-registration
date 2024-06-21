@@ -28,27 +28,28 @@ public class AgreementService implements AgreementApi {
     private final AgreementMapper agreementMapper;
 
     @Override
-    public void save(AgreementCreateDto agreementCreateDto) {
+    public void save(AgreementCreateDto dto) {
 
-        Company company = companyRepository.findById(agreementCreateDto.getCompanyId())
+        Company company = companyRepository.findById(dto.getCompanyId())
                 .orElseThrow(() -> new EntityNotFoundException("Company not found"));
 
         Agreement agreement = new Agreement();
-        agreement.setBasis(agreementCreateDto.getBasis());
-        agreement.setPracticeType(agreementCreateDto.getPracticeType());
-        agreement.setAgreementDate(agreementCreateDto.getAgreementDate());
-        agreement.setStartDate(agreementCreateDto.getStartDate());
-        agreement.setEndDate(agreementCreateDto.getEndDate());
-        agreement.setStudentInitials(agreementCreateDto.getStudentInitials());
-        agreement.setYear(agreementCreateDto.getYear());
-        agreement.setSpeciality(agreementCreateDto.getSpeciality());
+        agreement.setBasis(dto.getBasis());
+        agreement.setPracticeType(dto.getPracticeType());
+        agreement.setAgreementDate(dto.getAgreementDate());
+        agreement.setCompanyAgreementDate(dto.getCompanyAgreementDate());
+        agreement.setStartDate(dto.getStartDate());
+        agreement.setEndDate(dto.getEndDate());
+        agreement.setStudentInitials(dto.getStudentInitials());
+        agreement.setYear(dto.getYear());
+        agreement.setSpeciality(dto.getSpeciality());
         agreement.setCompany(company);
 
         File file = new File();
         try {
-            file.setName(agreementCreateDto.getFile().getOriginalFilename());
-            file.setData(agreementCreateDto.getFile().getBytes());
-            file.setType(agreementCreateDto.getFile().getContentType());
+            file.setName(dto.getFile().getOriginalFilename());
+            file.setData(dto.getFile().getBytes());
+            file.setType(dto.getFile().getContentType());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
