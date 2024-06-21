@@ -2,6 +2,8 @@ package com.eddev.domain;
 
 import com.eddev.constant.Basis;
 import com.eddev.constant.PracticeType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -42,10 +44,12 @@ public class Agreement {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "file_id", referencedColumnName = "id")
+    @JsonManagedReference
     private File file;
 
     @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", referencedColumnName = "id")
+    @JsonBackReference
     private Company company;
 
 }

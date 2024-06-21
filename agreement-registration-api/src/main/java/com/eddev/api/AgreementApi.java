@@ -2,6 +2,7 @@ package com.eddev.api;
 
 import com.eddev.dto.AgreementCreateDto;
 import com.eddev.dto.AgreementDto;
+import com.eddev.dto.AgreementEditDto;
 import com.eddev.dto.AgreementViewDto;
 
 import java.util.List;
@@ -13,5 +14,9 @@ public interface AgreementApi {
     List<AgreementDto> getAll();
 
     AgreementViewDto viewById(Long id);
+
+    void deleteById(Long id);
+
+    void editById(Long id, AgreementEditDto dto);
 
 }

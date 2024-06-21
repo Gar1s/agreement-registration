@@ -2,6 +2,7 @@ package com.eddev.domain;
 
 
 import com.eddev.constant.Basis;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -39,6 +40,7 @@ public class Company {
     private String index;
 
     @OneToMany(mappedBy = "company")
+    @JsonManagedReference
     private List<Agreement> agreements = new ArrayList<>();
 
 }

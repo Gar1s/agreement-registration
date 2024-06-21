@@ -16,7 +16,7 @@
             <label for="companyName" class="col-2 p-0">База практики:</label>
             <div class="col p-0">
                 <select class="form-select" id="companyName" name="companyId" required>
-                    <option value="2">ТзОВ «ДЕВБРИДЖ»</option>
+                    <option value="1">ТзОВ «ДЕВБРИДЖ»</option>
                 </select>
             </div>
         </div>

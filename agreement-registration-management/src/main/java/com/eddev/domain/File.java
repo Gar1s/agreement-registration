@@ -1,6 +1,7 @@
 package com.eddev.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +29,7 @@ public class File {
     private byte[] data;
 
     @OneToOne(mappedBy = "file")
+    @JsonBackReference
     private Agreement agreement;
 
 }

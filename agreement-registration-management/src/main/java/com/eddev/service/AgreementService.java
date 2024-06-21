@@ -6,6 +6,7 @@ import com.eddev.domain.Company;
 import com.eddev.domain.File;
 import com.eddev.dto.AgreementCreateDto;
 import com.eddev.dto.AgreementDto;
+import com.eddev.dto.AgreementEditDto;
 import com.eddev.dto.AgreementViewDto;
 import com.eddev.mapper.AgreementMapper;
 import com.eddev.repository.AgreementRepository;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -66,6 +68,29 @@ public class AgreementService implements AgreementApi {
     public AgreementViewDto viewById(Long id) {
         Agreement agreement = findById(id);
         return agreementMapper.toViewDto(agreement);
+    }
+
+    @Override
+    public void editById(Long id, AgreementEditDto dto) {
+        Agreement agreement = findById(id);
+        agreementMapper.editFromEditDto(agreement, dto);
+        try {
+            if(!Objects.equals("", dto.getDocument().getOriginalFilename())){
+                File file = agreement.getFile();
+                file.setName(dto.getDocument().getOriginalFilename());
+                file.setData(dto.getDocument().getBytes());
+                file.setType(dto.getDocument().getContentType());
+                agreement.setFile(file);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        agreementRepository.save(agreement);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        agreementRepository.deleteById(id);
     }
 
     private Agreement findById(Long id){

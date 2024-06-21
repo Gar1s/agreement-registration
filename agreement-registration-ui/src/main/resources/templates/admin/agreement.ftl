@@ -107,11 +107,11 @@
         </div>
         <div class="col-3">
             <div class="d-flex flex-column align-items-center">
-                <a href="${.globals.baseUrl}/admin/agreements/edit" class="my-2">
+                <a href="${.globals.baseUrl}/admin/agreements/${agreement.id}/edit" class="my-2">
                     <button type="button" class="btn btn-primary">Редагувати</button>
                 </a>
-                <form action="/admin/agreements/${agreement.id}" method="post" class="my-2">
-                    <button type="button" class="btn btn-danger">Вилучити</button>
+                <form action="${.globals.baseUrl}/admin/agreements/${agreement.id}/delete" method="post" class="my-2">
+                    <button type="submit" class="btn btn-danger">Вилучити</button>
                 </form>
             </div>
         </div>

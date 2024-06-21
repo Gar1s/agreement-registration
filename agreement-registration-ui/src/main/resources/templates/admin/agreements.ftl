@@ -52,9 +52,3 @@
 </div>
 </body>
 </html>
-
-
-<#--        <th>PDF Link</th>-->
-<#--            <td>-->
-<#--                <a href="/pdf/${agreement.id}" target="_blank">Open PDF</a>-->
-<#--            </td>-->
