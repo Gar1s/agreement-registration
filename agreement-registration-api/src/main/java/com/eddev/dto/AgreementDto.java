@@ -15,10 +15,11 @@ public class AgreementDto {
     private Long id;
     @Enumerated(value = EnumType.STRING)
     private PracticeType practiceType;
-    private LocalDate companyAgreementDate;
     private LocalDate startDate;
     private LocalDate endDate;
     private String studentInitials;
+    private LocalDate companyAgreementDate;
     private String companyName;
+    private String companyId;
 
 }

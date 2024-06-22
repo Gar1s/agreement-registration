@@ -31,7 +31,6 @@ public class AgreementEditDto {
     private String studentInitials;
     private Integer year;
     private String speciality;
-    private CompanyEditDto companyEditDto;
     private MultipartFile document;
 
 }

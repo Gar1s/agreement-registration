@@ -12,14 +12,15 @@ import org.mapstruct.MappingTarget;
 public interface AgreementMapper {
 
     @Mapping(target = "companyName", source = "company.name")
+    @Mapping(target = "companyId", source = "company.id")
     AgreementDto toDto(Agreement agreement);
 
-    @Mapping(target = "companyViewDto", source = "company")
+    @Mapping(target = "companyDto", source = "company")
     @Mapping(target = "fileId", source = "file.id")
     @Mapping(target = "fileName", source = "file.name")
     AgreementViewDto toViewDto(Agreement agreement);
 
-    @Mapping(target = "company", source = "companyEditDto")
+
     void editFromEditDto(@MappingTarget Agreement agreement, AgreementEditDto dto);
 
 }

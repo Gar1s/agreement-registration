@@ -80,19 +80,19 @@
         <div class="col-9 border border-secondary border-1 rounded-2 p-3">
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">База практики:</p>
-                <a href="/admin/companies/${agreement.companyViewDto.id}">${agreement.companyViewDto.name}</a>
+                <a href="/admin/companies/${agreement.companyDto.id}">${agreement.companyDto.name}</a>
             </div>
             <div class="px-2 my-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Підстава:</p>
-                ${basisMap[agreement.companyViewDto.basis?string]}
+                ${basisMap[agreement.companyDto.basis?string]}
             </div>
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Посада:</p>
-                ${agreement.companyViewDto.position}
+                ${agreement.companyDto.position}
             </div>
             <div class="px-2 my-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Ініціали керівника:</p>
-                ${agreement.companyViewDto.initials}
+                ${agreement.companyDto.initials}
             </div>
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Дата угоди:</p>
@@ -100,9 +100,9 @@
             </div>
             <div class="px-2 mt-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Адреса:</p>
-                м. ${agreement.companyViewDto.city}, вул.
-                ${agreement.companyViewDto.street},
-                ${agreement.companyViewDto.index}
+                м. ${agreement.companyDto.city}, вул.
+                ${agreement.companyDto.street},
+                ${agreement.companyDto.index}
             </div>
         </div>
         <div class="col-3">

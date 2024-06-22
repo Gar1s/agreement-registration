@@ -126,67 +126,11 @@
         <h5 class="m-0 p-0 pb-4 pt-4">Дані компанії:</h5>
 
         <div class="row align-items-center">
-            <label for="companyName" class="col-2 p-0">База практики:</label>
-            <div class="col p-0">
-                <input type="text" class="form-control" id="companyName" name="companyEditDto.name" value="${agreement.companyViewDto.name}">
-            </div>
-        </div>
-
-        <div class="row align-items-center py-3">
-            <label for="basis" class="col-2 p-0">Підстава:</label>
-            <div class="col p-0">
-                <select class="form-select" id="basis" name="companyEditDto.basis">
-                    <option value="${agreement.companyViewDto.basis}">${basisMap[agreement.companyViewDto.basis?string]}</option>
-                    <#if agreement.basis != "STATUTE">
-                        <option value="STATUTE">Статут</option>
-                    </#if>
-                    <#if agreement.basis != "ORDER">
-                        <option value="ORDER">Доручення</option>
-                    </#if>
-                </select>
-            </div>
-        </div>
-
-        <div class="row align-items-center">
-            <label for="position" class="col-2 p-0">Посада:</label>
-            <div class="col p-0">
-                <input type="text" class="form-control" id="position" name="companyEditDto.position" value="${agreement.companyViewDto.position}">
-            </div>
-        </div>
-
-        <div class="row align-items-center py-3">
-            <label for="directorInitials" class="col-3 p-0">Ініціали керівника:</label>
-            <div class="col p-0">
-                <input type="text" class="form-control" id="directorInitials" name="companyEditDto.initials" value="${agreement.companyViewDto.initials}">
-            </div>
-        </div>
-
-        <div class="row align-items-center">
             <label for="companyAgreementDate" class="col-2 p-0">Дата угоди:</label>
             <div class="col p-0">
                 <input type="date" class="form-control" id="companyAgreementDate" name="companyAgreementDate" value="${agreement.companyAgreementDate}">
             </div>
         </div>
-
-        <div class="row align-items-center py-3">
-            <label for="city" class="col-2 p-0">Місто:</label>
-            <div class="col p-0">
-                <input type="text" class="form-control" id="city" name="companyEditDto.city" value="${agreement.companyViewDto.city}">
-            </div>
-        </div>
-        <div class="row align-items-center">
-            <label for="street" class="col-2 p-0">Вулиця:</label>
-            <div class="col p-0">
-                <input type="text" class="form-control" id="street" name="companyEditDto.street" value="${agreement.companyViewDto.street}">
-            </div>
-        </div>
-        <div class="row align-items-center pt-3">
-            <label for="index" class="col-2 p-0">Індекс:</label>
-            <div class="col p-0">
-                <input type="text" class="form-control" id="index" name="companyEditDto.index" value="${agreement.companyViewDto.index}">
-            </div>
-        </div>
-
 
         <div class="text-center my-3">
             <a href="/admin/agreements/${agreement.id}" class="navbar-brand m-0">

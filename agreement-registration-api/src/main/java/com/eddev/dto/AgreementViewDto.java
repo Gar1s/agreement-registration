@@ -27,7 +27,7 @@ public class AgreementViewDto {
     private String studentInitials;
     private Integer year;
     private String speciality;
-    private CompanyViewDto companyViewDto;
+    private CompanyDto companyDto;
     private Long fileId;
     private String fileName;
 
