@@ -3,16 +3,12 @@ package com.eddev.dto;
 import com.eddev.constant.Basis;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.util.List;
-
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-public class CompanyViewDto {
+public class CompanyDto {
 
     private Long id;
     private String name;
@@ -23,6 +19,5 @@ public class CompanyViewDto {
     private String city;
     private String street;
     private String index;
-    private List<Long> agreementIds;
 
 }
