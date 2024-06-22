@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,9 +20,9 @@ public class CompanyViewDto {
     private Basis basis;
     private String position;
     private String initials;
-    private LocalDate agreementDate;
     private String city;
     private String street;
     private String index;
+    private List<Long> agreementIds;
 
 }

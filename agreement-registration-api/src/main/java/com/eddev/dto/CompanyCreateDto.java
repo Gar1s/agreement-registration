@@ -3,18 +3,12 @@ package com.eddev.dto;
 import com.eddev.constant.Basis;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
-public class CompanyEditDto {
+public class CompanyCreateDto {
 
     private String name;
     @Enumerated(value = EnumType.STRING)

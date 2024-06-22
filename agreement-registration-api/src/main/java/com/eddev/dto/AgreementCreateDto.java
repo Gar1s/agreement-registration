@@ -18,6 +18,7 @@ public class AgreementCreateDto {
     private Basis basis;
     private PracticeType practiceType;
     private LocalDate agreementDate;
+    private LocalDate companyAgreementDate;
     private LocalDate startDate;
     private LocalDate endDate;
     private String studentInitials;

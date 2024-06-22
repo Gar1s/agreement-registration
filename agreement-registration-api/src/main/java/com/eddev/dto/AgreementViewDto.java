@@ -21,12 +21,13 @@ public class AgreementViewDto {
     @Enumerated(value = EnumType.STRING)
     private PracticeType practiceType;
     private LocalDate agreementDate;
+    private LocalDate companyAgreementDate;
     private LocalDate startDate;
     private LocalDate endDate;
     private String studentInitials;
     private Integer year;
     private String speciality;
-    private CompanyViewDto companyViewDto;
+    private CompanyDto companyDto;
     private Long fileId;
     private String fileName;
 

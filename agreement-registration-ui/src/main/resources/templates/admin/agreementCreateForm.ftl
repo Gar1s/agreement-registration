@@ -51,9 +51,9 @@
                     </div>
                 </div>
                 <div class="row align-items-center pt-2">
-                    <label for="file" class="col p-0">Пдф угода:</label>
+                    <label for="companyAgreementDate" class="col p-0">Дата угоди компанії:</label>
                     <div class="col p-0">
-                        <input type="file" class="form-control" id="file" name="file" required>
+                        <input type="date" class="form-control" id="companyAgreementDate" name="companyAgreementDate">
                     </div>
                 </div>
             </div>
@@ -73,10 +73,18 @@
             </div>
         </div>
 
-        <div class="row align-items-center">
-            <label for="studentInitials" class="col-3 p-0">Ініціали студента:</label>
-            <div class="col p-0">
-                <input type="text" class="form-control" id="studentInitials" name="studentInitials">
+        <div class="row py-4">
+            <div class="col-6 me-5 row align-items-center">
+                <label for="studentInitials" class="col-3 p-0">Ініціали студента:</label>
+                <div class="col p-0">
+                    <input type="text" class="form-control" id="studentInitials" name="studentInitials">
+                </div>
+            </div>
+            <div class="col row align-items-center">
+                <label for="file" class="col-4 p-0">PDF угода:</label>
+                <div class="col p-0">
+                    <input type="file" class="form-control" id="file" name="file" required>
+                </div>
             </div>
         </div>
 
