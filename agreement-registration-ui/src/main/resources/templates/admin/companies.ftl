@@ -30,7 +30,7 @@
         <tbody>
         <#list list as company>
             <tr class="align-middle">
-                <th scope="row">${company.id}</th>
+                <th scope="row">${company_index + 1}</th>
                 <td>${company.name}</td>
                 <td>${basisMap[company.basis?string]}</td>
                 <td>${company.position}</td>

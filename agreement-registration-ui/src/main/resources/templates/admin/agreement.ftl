@@ -76,7 +76,9 @@
         </div>
     </div>
 
-    <div class="row justify-content-between align-items-center mt-5 mb-5">
+    <h5 class="m-0 p-0 pt-4">Дані компанії:</h5>
+
+    <div class="row justify-content-between align-items-center mt-3 mb-5">
         <div class="col-9 border border-secondary border-1 rounded-2 p-3">
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">База практики:</p>
