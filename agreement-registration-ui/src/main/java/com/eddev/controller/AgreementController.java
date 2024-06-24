@@ -4,6 +4,7 @@ import com.eddev.api.AgreementApi;
 import com.eddev.dto.AgreementCreateDto;
 import com.eddev.dto.AgreementEditDto;
 import com.eddev.dto.AgreementViewDto;
+import com.eddev.search.AgreementsSearchCriteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,8 +26,19 @@ public class AgreementController {
     private final AgreementApi agreementApi;
 
     @GetMapping
-    public String getAll(Model model) {
-        model.addAttribute("list", agreementApi.getAll());
+    public String getAll(Model model,
+                         @RequestParam(required = false, defaultValue = "") String date,
+                         @RequestParam(required = false, defaultValue = "") String type,
+                         @RequestParam(required = false, defaultValue = "") String companyName
+    ) {
+        AgreementsSearchCriteria criteria = AgreementsSearchCriteria.builder()
+                .date(date).practiceType(type).companyName(companyName).build();
+        Map<String, Object> params = new HashMap<>();
+        params.put("searchDate", date);
+        params.put("searchPracticeType", type);
+        params.put("searchCompanyName", companyName);
+        model.addAttribute("list", agreementApi.getAll(criteria));
+        model.addAttribute("params", params);
         return "admin/agreements";
     }
 

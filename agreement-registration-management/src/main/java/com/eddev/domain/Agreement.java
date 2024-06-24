@@ -48,7 +48,7 @@ public class Agreement {
     @JsonManagedReference
     private File file;
 
-    @ManyToOne//(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     @JsonBackReference
     private Company company;
