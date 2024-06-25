@@ -5,7 +5,7 @@ spring:
     password: ${PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
   freemarker:
     template-loader-path: "classpath:/templates"
     suffix: ".ftl"
