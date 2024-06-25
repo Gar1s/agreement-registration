@@ -13,8 +13,7 @@
     } />
     <#assign basisMap = {
     "STATUTE": "Статут",
-    "ORDER": "Доручення",
-    "COMMISSION": "Розпорядження"
+    "COMMISSION": "Доручення"
     } />
 </head>
 <body>
@@ -31,8 +30,8 @@
                     <#if agreement.basis != "STATUTE">
                         <option value="STATUTE">Статут</option>
                     </#if>
-                    <#if agreement.basis != "ORDER">
-                        <option value="ORDER">Доручення</option>
+                    <#if agreement.basis != "COMMISSION">
+                        <option value="COMMISSION">Доручення</option>
                     </#if>
                 </select>
             </div>

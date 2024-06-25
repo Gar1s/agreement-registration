@@ -3,9 +3,6 @@ spring:
     url: ${URL:jdbc:postgresql://localhost:5432/AgreementRegistration}
     username: ${USERNAME:postgres}
     password: ${PASSWORD}
-  jpa:
-    hibernate:
-      ddl-auto: update
   freemarker:
     template-loader-path: "classpath:/templates"
     suffix: ".ftl"

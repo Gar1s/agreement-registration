@@ -10,13 +10,57 @@
     "STUDY": "Навчальна",
     "MANUFACTURE": "Виробнича",
     "TECHNOLOGICAL": "Навчально-технологічна",
-    "PRE_DIPLOMA":"Переддипломна"
+    "PRE_DIPLOMA":"Переддипломна",
+    "":"..."
     } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
 <div class="container col-10">
     <h1 class="text-center my-4">Всі угоди</h1>
+    <form action="/admin/agreements" method="get">
+        <div class="row align-items-center">
+            <div class="col align-items-center">
+                <label for="date" class="p-0">Рік(xxxx):</label>
+                <div class="p-0">
+                    <input type="text" class="form-control" id="date" name="date" value="${params['searchDate']}">
+                </div>
+            </div>
+            <div class="col align-items-center py-3">
+                <label for="companyName" class="p-0">Назва компанії:</label>
+                <div class="p-0">
+                    <input type="text" class="form-control" id="companyName" name="companyName"
+                           value="${params['searchCompanyName']}">
+                </div>
+            </div>
+            <div class="col align-items-center">
+                <label for="practiceType" class="p-0">Вид практики:</label>
+                <div class="p-0">
+                    <select class="form-select" id="practiceType" name="type">
+                        <option value="${params['searchPracticeType']}">${practiceTypeMap[params['searchPracticeType']?string]}</option>
+                        <#if params['searchPracticeType'] != "STUDY">
+                            <option value="STUDY">Навчальна</option>
+                        </#if>
+                        <#if params['searchPracticeType'] != "MANUFACTURE">
+                            <option value="MANUFACTURE">Виробнича</option>
+                        </#if>
+                        <#if params['searchPracticeType'] != "TECHNOLOGICAL">
+                            <option value="TECHNOLOGICAL">Навчально-технологічна</option>
+                        </#if>
+                        <#if params['searchPracticeType'] != "PRE_DIPLOMA">
+                            <option value="PRE_DIPLOMA">Переддипломна</option>
+                        </#if>
+                        <#if params['searchPracticeType'] != "">
+                            <option value="">...</option>
+                        </#if>
+                    </select>
+                </div>
+            </div>
+            <div class="col-2 text-center">
+                <button class="btn btn-outline-success" type="submit">Пошук</button>
+            </div>
+        </div>
+    </form>
     <table class="table text-center m-0">
         <thead>
         <tr class="fs-6">

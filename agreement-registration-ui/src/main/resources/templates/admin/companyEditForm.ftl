@@ -7,8 +7,8 @@
     <#import "../component/navbar.ftl" as navbar>
     <#assign basisMap = {
     "STATUTE": "Статут",
-    "ORDER": "Доручення",
-    "COMMISSION": "Розпорядження"
+    "COMMISSION": "Доручення",
+    "ORDER": "Розпорядження"
     } />
 </head>
 <body>
@@ -32,8 +32,11 @@
                     <#if company.basis != "STATUTE">
                         <option value="STATUTE">Статут</option>
                     </#if>
+                    <#if company.basis != "COMMISSION">
+                        <option value="COMMISSION">Доручення</option>
+                    </#if>
                     <#if company.basis != "ORDER">
-                        <option value="ORDER">Доручення</option>
+                        <option value="ORDER">Розпорядження</option>
                     </#if>
                 </select>
             </div>

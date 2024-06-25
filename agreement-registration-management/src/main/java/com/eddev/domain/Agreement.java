@@ -18,6 +18,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
@@ -44,11 +45,13 @@ public class Agreement {
     private String speciality;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @ToString.Exclude
     @JoinColumn(name = "file_id", referencedColumnName = "id")
     @JsonManagedReference
     private File file;
 
-    @ManyToOne//(fetch = FetchType.LAZY)
+    @ManyToOne
+    @ToString.Exclude
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     @JsonBackReference
     private Company company;

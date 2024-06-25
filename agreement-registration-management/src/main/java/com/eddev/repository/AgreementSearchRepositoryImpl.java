@@ -1,0 +1,56 @@
+package com.eddev.repository;
+
+import com.eddev.domain.Agreement;
+import com.eddev.search.AgreementsSearchCriteria;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Repository
+@RequiredArgsConstructor
+public class AgreementSearchRepositoryImpl implements AgreementSearchRepository{
+
+    private final EntityManager entityManager;
+
+    @Override
+    public List<Agreement> findAllByCriteria(AgreementsSearchCriteria criteria) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Agreement> criteriaQuery = criteriaBuilder.createQuery(Agreement.class);
+        List<Predicate> predicates = new ArrayList<>();
+        // select from Agreements
+        Root<Agreement> root = criteriaQuery.from(Agreement.class);
+
+        if(!criteria.getDate().isEmpty()) {
+            int year = Integer.parseInt(criteria.getDate());
+            Predicate datePredicate = criteriaBuilder.equal(
+                    criteriaBuilder.function("date_part",
+                            Integer.class, criteriaBuilder.literal("YEAR"), root.get("companyAgreementDate")),
+                    year
+            );
+            predicates.add(datePredicate);
+        }
+        if(!criteria.getPracticeType().isEmpty()){
+            Predicate typePred = criteriaBuilder.equal(root.get("practiceType"), criteria.getPracticeType());
+            predicates.add(typePred);
+        }
+        if(!criteria.getCompanyName().isEmpty()){
+            Predicate namePred = criteriaBuilder.equal(root.get("company").get("name"), criteria.getCompanyName());
+            predicates.add(namePred);
+        }
+
+        criteriaQuery.where(
+                criteriaBuilder.and(predicates.toArray(new Predicate[0]))
+        );
+        TypedQuery<Agreement> query = entityManager.createQuery(criteriaQuery);
+        return query.getResultList();
+    }
+
+}

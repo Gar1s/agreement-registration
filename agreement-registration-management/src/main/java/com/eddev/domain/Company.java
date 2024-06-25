@@ -14,6 +14,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,7 @@ public class Company {
     private String street;
     private String index;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "company")
     @JsonManagedReference
     private List<Agreement> agreements = new ArrayList<>();

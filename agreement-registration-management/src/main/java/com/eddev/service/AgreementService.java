@@ -10,10 +10,13 @@ import com.eddev.dto.AgreementEditDto;
 import com.eddev.dto.AgreementViewDto;
 import com.eddev.mapper.AgreementMapper;
 import com.eddev.repository.AgreementRepository;
+import com.eddev.repository.AgreementSearchRepository;
 import com.eddev.repository.CompanyRepository;
+import com.eddev.search.AgreementsSearchCriteria;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,6 +27,7 @@ import java.util.Objects;
 public class AgreementService implements AgreementApi {
 
     private final AgreementRepository agreementRepository;
+    private final AgreementSearchRepository searchRepository;
     private final CompanyRepository companyRepository;
     private final AgreementMapper agreementMapper;
 
@@ -58,9 +62,10 @@ public class AgreementService implements AgreementApi {
         agreementRepository.save(agreement);
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public List<AgreementDto> getAll() {
-        return agreementRepository.findAll().stream()
+    public List<AgreementDto> getAll(AgreementsSearchCriteria criteria) {
+        return searchRepository.findAllByCriteria(criteria).stream()
                 .map(agreementMapper::toDto)
                 .toList();
     }
