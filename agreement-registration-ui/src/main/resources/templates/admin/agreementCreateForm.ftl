@@ -28,7 +28,7 @@
                 <div class="col p-0">
                     <select class="form-select" id="basis" name="basis">
                         <option value="STATUTE">Статут</option>
-                        <option value="ORDER">Доручення</option>
+                        <option value="COMMISSION">Доручення</option>
                     </select>
                 </div>
             </div>

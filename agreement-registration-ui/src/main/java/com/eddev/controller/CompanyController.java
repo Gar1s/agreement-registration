@@ -58,5 +58,11 @@ public class CompanyController {
         return "redirect:/admin/companies/" + id;
     }
 
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        companyApi.deleteById(id);
+        return "redirect:/admin/companies";
+    }
+
 
 }

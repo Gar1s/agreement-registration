@@ -16,4 +16,7 @@ public interface CompanyApi {
     CompanyViewDto viewById(Long id);
 
     void editById(Long id, CompanyEditDto dto);
+
+    void deleteById(Long id);
+
 }

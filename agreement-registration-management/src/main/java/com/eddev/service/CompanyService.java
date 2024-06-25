@@ -60,6 +60,11 @@ public class CompanyService implements CompanyApi {
         companyRepository.save(company);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        companyRepository.deleteById(id);
+    }
+
     private Company findById(Long id) {
         return companyRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Company not found"));

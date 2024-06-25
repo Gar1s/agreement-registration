@@ -8,8 +8,8 @@
     <#import "../component/navbar.ftl" as navbar>
     <#assign basisMap = {
     "STATUTE": "Статут",
-    "ORDER": "Доручення",
-    "COMMISSION": "Розпорядження"
+    "COMMISSION": "Доручення",
+    "ORDER": "Розпорядження"
     } />
 </head>
 <body>
