@@ -33,7 +33,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
-                        .defaultSuccessUrl("/admin/agreements")
+                        .defaultSuccessUrl("/admin/agreements", true)
                 )
                 .build();
     }
