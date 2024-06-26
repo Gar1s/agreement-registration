@@ -3,6 +3,11 @@ spring:
     url: ${URL:jdbc:postgresql://localhost:5432/AgreementRegistration}
     username: ${USERNAME:postgres}
     password: ${PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
   freemarker:
     template-loader-path: "classpath:/templates"
     suffix: ".ftl"
