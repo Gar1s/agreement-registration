@@ -84,9 +84,9 @@
                     </div>
                 </div>
                 <div class="col row align-items-center">
-                    <label for="file" class="col-4 p-0">PDF угода:</label>
+                    <label for="files" class="col-4 p-0">PDF угода:</label>
                     <div class="col p-0">
-                        <input type="file" class="form-control" id="file" name="file" required>
+                        <input type="file" class="form-control" id="files" name="files" multiple required>
                     </div>
                 </div>
             </div>

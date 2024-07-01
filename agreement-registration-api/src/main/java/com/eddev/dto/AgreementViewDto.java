@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,7 +30,6 @@ public class AgreementViewDto {
     private Integer year;
     private String speciality;
     private CompanyDto companyDto;
-    private Long fileId;
-    private String fileName;
+    private List<FileShortDto> files = new ArrayList<>();
 
 }

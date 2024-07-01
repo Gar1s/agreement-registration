@@ -56,9 +56,11 @@
 
     <div class="row justify-content-between align-items-center mt-4">
         <div class="col-4 border border-secondary border-1 rounded-2 p-3">
-            <div class="my-2 px-2 d-flex justify-content-between">
-                <p class="m-0 fw-medium">Документ:</p>
-                <a href="/admin/files/${agreement.fileId}" target="_blank">${agreement.fileName}</a>
+            <div class="my-2 px-2">
+                <p class="m-0 fw-medium">Документи:</p>
+                <#list agreement.files as file>
+                    <a href="/admin/files/${file.id}" target="_blank">${file.name}</a>
+                </#list>
             </div>
         </div>
         <div class="col-7 border border-secondary border-1 rounded-2 p-3">

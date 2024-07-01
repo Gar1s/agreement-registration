@@ -16,8 +16,7 @@ public interface AgreementMapper {
     AgreementDto toDto(Agreement agreement);
 
     @Mapping(target = "companyDto", source = "company")
-    @Mapping(target = "fileId", source = "file.id")
-    @Mapping(target = "fileName", source = "file.name")
+    @Mapping(target = "files", ignore = true)
     AgreementViewDto toViewDto(Agreement agreement);
 
 

@@ -17,16 +17,16 @@ CREATE TABLE agreements
     student_initials       VARCHAR(255) NOT NULL,
     year                   INTEGER      NOT NULL,
     speciality             VARCHAR(255) NOT NULL,
-    company_id             BIGINT       NOT NULL,
-    file_id                BIGINT       NOT NULL
+    company_id             BIGINT       NOT NULL
 );
 
 CREATE TABLE files
 (
-    id   BIGSERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    type VARCHAR(255) NOT NULL,
-    data oid          NOT NULL
+    id           BIGSERIAL PRIMARY KEY,
+    name         VARCHAR(255) NOT NULL,
+    type         VARCHAR(255) NOT NULL,
+    data         oid          NOT NULL,
+    agreement_id BIGINT       NOT NULL
 );
 
 CREATE TABLE companies
@@ -48,5 +48,5 @@ ALTER TABLE
     agreements
     ADD CONSTRAINT agreements_company_id_foreign FOREIGN KEY (company_id) REFERENCES companies (id);
 ALTER TABLE
-    agreements
-    ADD CONSTRAINT agreements_file_id_foreign FOREIGN KEY (file_id) REFERENCES files (id);
+    files
+    ADD CONSTRAINT files_agreement_id_foreign FOREIGN KEY (agreement_id) REFERENCES agreements (id);

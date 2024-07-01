@@ -8,6 +8,8 @@ import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,6 +26,6 @@ public class AgreementCreateDto {
     private String studentInitials;
     private Integer year;
     private String speciality;
-    private MultipartFile file;
+    private List<MultipartFile> files = new ArrayList<>();
 
 }
