@@ -17,5 +17,6 @@ public class AgreementsSearchCriteria {
     @Enumerated(value = EnumType.STRING)
     private String practiceType;
     private String companyName;
+    private String studentInitials;
 
 }

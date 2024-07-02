@@ -20,7 +20,7 @@
     <h1 class="text-center my-4">Всі угоди</h1>
     <form action="/admin/agreements" method="get">
         <div class="row align-items-center">
-            <div class="col align-items-center">
+            <div class="col-2 align-items-center">
                 <label for="date" class="p-0">Рік(xxxx):</label>
                 <div class="p-0">
                     <input type="text" class="form-control" id="date" name="date" value="${params['searchDate']}">
@@ -31,6 +31,13 @@
                 <div class="p-0">
                     <input type="text" class="form-control" id="companyName" name="companyName"
                            value="${params['searchCompanyName']}">
+                </div>
+            </div>
+            <div class="col align-items-center py-3">
+                <label for="studentInitials" class="p-0">Ініціали студента:</label>
+                <div class="p-0">
+                    <input type="text" class="form-control" id="studentInitials" name="studentInitials"
+                           value="${params['searchStudentInitials']}">
                 </div>
             </div>
             <div class="col align-items-center">
