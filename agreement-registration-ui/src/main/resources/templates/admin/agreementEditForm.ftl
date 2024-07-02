@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="row align-items-center pt-2">
-                    <label for="file" class="col p-0">Пдф угоди:</label>
+                    <label for="file" class="col p-0">Додати файли:</label>
                     <div class="col p-0">
                         <input type="file" class="form-control" id="file" name="documents" multiple>
                     </div>

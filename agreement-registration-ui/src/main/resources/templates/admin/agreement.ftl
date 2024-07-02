@@ -58,9 +58,14 @@
         <div class="col-4 border border-secondary border-1 rounded-2 p-3">
             <div class="my-2 px-2">
                 <p class="m-0 fw-medium">Документи:</p>
-                <#list agreement.files as file>
-                    <a href="/admin/files/${file.id}" target="_blank">${file.name}</a>
-                </#list>
+                <div class="" id="app" style="font-size: 14px">
+                    <#list agreement.files as file>
+                        <div class="d-flex justify-content-between">
+                            <a href="/admin/files/${file.id}" target="_blank">${file.name}</a>
+                            <p @click="deleteById(${file.id})" class="text-danger" style="cursor: pointer">X</p>
+                        </div>
+                    </#list>
+                </div>
             </div>
         </div>
         <div class="col-7 border border-secondary border-1 rounded-2 p-3">
@@ -123,6 +128,7 @@
     </div>
 
 </div>
-
+<input type="hidden" id="baseUrl" value="${.globals.baseUrl!}">
+<script type="module" src="/js/agreement.js"></script>
 </body>
 </html>

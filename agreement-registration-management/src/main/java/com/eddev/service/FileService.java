@@ -27,6 +27,11 @@ public class FileService implements FileApi{
         return fileDto;
     }
 
+    @Override
+    public void deleteById(Long id) {
+        fileRepository.deleteById(id);
+    }
+
     private File findById(Long id){
         return fileRepository.findById(id)
                 .orElseThrow(()-> new EntityNotFoundException("File not found!"));

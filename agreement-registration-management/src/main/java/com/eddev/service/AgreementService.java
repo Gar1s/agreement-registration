@@ -94,7 +94,7 @@ public class AgreementService implements AgreementApi {
         Agreement agreement = findById(id);
         agreementMapper.editFromEditDto(agreement, dto);
 
-        if (!dto.getDocuments().isEmpty()) {
+        if (!dto.getDocuments().get(0).isEmpty()) {
             List<File> files = new ArrayList<>(dto.getDocuments().stream()
                     .map(dtoFile -> {
                         try {
