@@ -1,6 +1,5 @@
 package com.eddev.dto;
 
-import com.eddev.constant.Basis;
 import com.eddev.constant.PracticeType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -21,8 +20,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class AgreementEditDto {
 
-    @Enumerated(value = EnumType.STRING)
-    private Basis basis;
+    private String basis;
     @Enumerated(value = EnumType.STRING)
     private PracticeType practiceType;
     private LocalDate agreementDate;

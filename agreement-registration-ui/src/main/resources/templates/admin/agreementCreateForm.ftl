@@ -27,8 +27,8 @@
                 <label for="basis" class="col-2 p-0">Підстава:</label>
                 <div class="col p-0">
                     <select class="form-select" id="basis" name="basis">
-                        <option value="STATUTE">Статут</option>
-                        <option value="COMMISSION">Доручення</option>
+                        <option value="Статут">Статут</option>
+                        <option value="Доручення">Доручення</option>
                     </select>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="col row align-items-center">
-                    <label for="files" class="col-4 p-0">PDF угода:</label>
+                    <label for="files" class="col-4 p-0">Пдф угоди:</label>
                     <div class="col p-0">
                         <input type="file" class="form-control" id="files" name="files" multiple required>
                     </div>

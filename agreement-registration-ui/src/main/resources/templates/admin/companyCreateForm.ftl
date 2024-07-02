@@ -23,9 +23,9 @@
             <label for="basis" class="col-2 p-0">Підстава:</label>
             <div class="col p-0">
                 <select class="form-select" id="basis" name="basis">
-                    <option value="STATUTE">Статут</option>
-                    <option value="COMMISSION">Доручення</option>
-                    <option value="ORDER">Розпорядження</option>
+                    <option value="Статут">Статут</option>
+                    <option value="Доручення">Доручення</option>
+                    <option value="Розпорядження">Розпорядження</option>
                 </select>
             </div>
         </div>

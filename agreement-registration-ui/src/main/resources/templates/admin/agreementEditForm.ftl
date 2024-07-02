@@ -11,10 +11,6 @@
     "TECHNOLOGICAL": "Навчально-технологічна",
     "PRE_DIPLOMA":"Переддипломна"
     } />
-    <#assign basisMap = {
-    "STATUTE": "Статут",
-    "COMMISSION": "Доручення"
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -26,12 +22,12 @@
             <label for="basis" class="col-2 p-0">Підстава:</label>
             <div class="col p-0">
                 <select class="form-select" id="basis" name="basis">
-                    <option value="${agreement.basis}">${basisMap[agreement.basis?string]}</option>
-                    <#if agreement.basis != "STATUTE">
-                        <option value="STATUTE">Статут</option>
+                    <option value="${agreement.basis}">${agreement.basis}</option>
+                    <#if agreement.basis != "Статут">
+                        <option value="Статут">Статут</option>
                     </#if>
-                    <#if agreement.basis != "COMMISSION">
-                        <option value="COMMISSION">Доручення</option>
+                    <#if agreement.basis != "Доручення">
+                        <option value="Доручення">Доручення</option>
                     </#if>
                 </select>
             </div>

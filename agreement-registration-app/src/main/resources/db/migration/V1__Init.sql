@@ -1,10 +1,7 @@
 CREATE TABLE agreements
 (
     id                     BIGSERIAL PRIMARY KEY,
-    basis                  VARCHAR(100) CHECK
-        (
-        basis IN ('STATUTE', 'COMMISSION')
-        )                               NOT NULL,
+    basis                  VARCHAR(120) NOT NULL,
     practice_type          VARCHAR(100)
         CHECK
             (
@@ -33,10 +30,7 @@ CREATE TABLE companies
 (
     id       BIGSERIAL PRIMARY KEY,
     name     VARCHAR(255) NOT NULL,
-    basis    VARCHAR(100) CHECK
-        (
-        basis IN ('STATUTE', 'ORDER', 'COMMISSION')
-        )                 NOT NULL,
+    basis    VARCHAR(120) NOT NULL,
     position VARCHAR(100) NOT NULL,
     initials VARCHAR(255) NOT NULL,
     city     VARCHAR(100) NOT NULL,

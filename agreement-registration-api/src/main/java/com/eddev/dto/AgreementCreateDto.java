@@ -1,6 +1,5 @@
 package com.eddev.dto;
 
-import com.eddev.constant.Basis;
 import com.eddev.constant.PracticeType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,7 @@ import java.util.List;
 public class AgreementCreateDto {
 
     private Long companyId;
-    private Basis basis;
+    private String basis;
     private PracticeType practiceType;
     private LocalDate agreementDate;
     private LocalDate companyAgreementDate;

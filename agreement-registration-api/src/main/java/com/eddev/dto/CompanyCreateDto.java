@@ -1,8 +1,5 @@
 package com.eddev.dto;
 
-import com.eddev.constant.Basis;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,8 +8,7 @@ import lombok.NoArgsConstructor;
 public class CompanyCreateDto {
 
     private String name;
-    @Enumerated(value = EnumType.STRING)
-    private Basis basis;
+    private String basis;
     private String position;
     private String initials;
     private String city;

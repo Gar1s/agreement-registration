@@ -1,6 +1,5 @@
 package com.eddev.domain;
 
-import com.eddev.constant.Basis;
 import com.eddev.constant.PracticeType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.CascadeType;
@@ -33,8 +32,7 @@ public class Agreement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Enumerated(value = EnumType.STRING)
-    private Basis basis;
+    private String basis;
     @Enumerated(value = EnumType.STRING)
     private PracticeType practiceType;
     private LocalDate agreementDate;

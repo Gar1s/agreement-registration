@@ -12,11 +12,6 @@
     "TECHNOLOGICAL": "Навчально-технологічна",
     "PRE_DIPLOMA":"Переддипломна"
     } />
-    <#assign basisMap = {
-    "STATUTE": "Статут",
-    "COMMISSION": "Доручення",
-    "ORDER": "Розпорядження"
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -31,7 +26,7 @@
             </div>
             <div class="my-2 px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Підстава:</p>
-                ${basisMap[agreement.basis?string]}
+                ${agreement.basis}
             </div>
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Вид практики:</p>
@@ -99,7 +94,7 @@
             </div>
             <div class="px-2 my-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Підстава:</p>
-                ${basisMap[agreement.companyDto.basis?string]}
+                ${agreement.companyDto.basis}
             </div>
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Посада:</p>

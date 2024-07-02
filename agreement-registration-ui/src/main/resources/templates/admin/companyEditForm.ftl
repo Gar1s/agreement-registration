@@ -5,11 +5,6 @@
     <title>Редагування Угоди</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
-    <#assign basisMap = {
-    "STATUTE": "Статут",
-    "COMMISSION": "Доручення",
-    "ORDER": "Розпорядження"
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -28,15 +23,15 @@
             <label for="basis" class="col-2 p-0">Підстава:</label>
             <div class="col p-0">
                 <select class="form-select" id="basis" name="basis">
-                    <option value="${company.basis}">${basisMap[company.basis?string]}</option>
-                    <#if company.basis != "STATUTE">
-                        <option value="STATUTE">Статут</option>
+                    <option value="${company.basis}">${company.basis}</option>
+                    <#if company.basis != "Статут">
+                        <option value="Статут">Статут</option>
                     </#if>
-                    <#if company.basis != "COMMISSION">
-                        <option value="COMMISSION">Доручення</option>
+                    <#if company.basis != "Доручення">
+                        <option value="Доручення">Доручення</option>
                     </#if>
-                    <#if company.basis != "ORDER">
-                        <option value="ORDER">Розпорядження</option>
+                    <#if company.basis != "Розпорядження">
+                        <option value="Розпорядження">Розпорядження</option>
                     </#if>
                 </select>
             </div>
