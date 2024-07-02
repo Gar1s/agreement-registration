@@ -25,11 +25,18 @@
 
             <div class="row align-items-center py-3">
                 <label for="basis" class="col-2 p-0">Підстава:</label>
-                <div class="col p-0">
-                    <select class="form-select" id="basis" name="basis">
-                        <option value="Статут">Статут</option>
-                        <option value="Доручення">Доручення</option>
-                    </select>
+                <div class="col p-0 d-grid align-items-center" style="grid-template-columns: 4fr 1fr">
+                    <div class="">
+                        <select v-if="optionState === true" class="form-select" id="basis" name="basis">
+                            <option value="Статут">Статут</option>
+                            <option value="Доручення">Доручення</option>
+                            <option value="Виписка з ЄДР">Виписка з ЄДР</option>
+                        </select>
+                        <input v-else class="w-100 form-control" type="text" id="basis" name="basis" placeholder="Введіть...">
+                    </div>
+                    <div class="text-center">
+                        <i @click="changeState" class="fa-solid fa-rotate fa-lg" style="cursor: pointer"></i>
+                    </div>
                 </div>
             </div>
             <div class="row align-items-center">

@@ -21,19 +21,25 @@
 
         <div class="row align-items-center py-3">
             <label for="basis" class="col-2 p-0">Підстава:</label>
-            <div class="col p-0">
-                <select class="form-select" id="basis" name="basis">
-                    <option value="${company.basis}">${company.basis}</option>
-                    <#if company.basis != "Статут">
-                        <option value="Статут">Статут</option>
-                    </#if>
-                    <#if company.basis != "Доручення">
-                        <option value="Доручення">Доручення</option>
-                    </#if>
-                    <#if company.basis != "Розпорядження">
-                        <option value="Розпорядження">Розпорядження</option>
-                    </#if>
-                </select>
+            <div id="app" class="col p-0 d-grid align-items-center" style="grid-template-columns: 4fr 1fr">
+                <div class="">
+                    <select v-if="optionState === true" class="form-select" id="basis" name="basis">
+                        <option value="${company.basis}">${company.basis}</option>
+                        <#if company.basis != "Статут">
+                            <option value="Статут">Статут</option>
+                        </#if>
+                        <#if company.basis != "Доручення">
+                            <option value="Доручення">Доручення</option>
+                        </#if>
+                        <#if company.basis != "Розпорядження">
+                            <option value="Розпорядження">Розпорядження</option>
+                        </#if>
+                    </select>
+                    <input v-else class="w-100 form-control" type="text" id="basis" name="basis" placeholder="Введіть...">
+                </div>
+                <div class="text-center">
+                    <i @click="changeState" class="fa-solid fa-rotate fa-lg" style="cursor: pointer"></i>
+                </div>
             </div>
         </div>
 
@@ -78,6 +84,6 @@
         </div>
     </form>
 </div>
-
+<script type="module" src="/js/optionState.js"></script>
 </body>
 </html>
