@@ -45,6 +45,10 @@ public class AgreementSearchRepositoryImpl implements AgreementSearchRepository{
             Predicate namePred = criteriaBuilder.equal(root.get("company").get("name"), criteria.getCompanyName());
             predicates.add(namePred);
         }
+        if(!criteria.getStudentInitials().isEmpty()){
+            Predicate initPred = criteriaBuilder.equal(root.get("studentInitials"), criteria.getStudentInitials());
+            predicates.add(initPred);
+        }
 
         criteriaQuery.where(
                 criteriaBuilder.and(predicates.toArray(new Predicate[0]))

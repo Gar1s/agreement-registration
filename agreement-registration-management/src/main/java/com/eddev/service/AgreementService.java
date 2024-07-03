@@ -9,6 +9,7 @@ import com.eddev.dto.AgreementDto;
 import com.eddev.dto.AgreementEditDto;
 import com.eddev.dto.AgreementViewDto;
 import com.eddev.mapper.AgreementMapper;
+import com.eddev.mapper.FileMapper;
 import com.eddev.repository.AgreementRepository;
 import com.eddev.repository.AgreementSearchRepository;
 import com.eddev.repository.CompanyRepository;
@@ -19,8 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -30,6 +31,7 @@ public class AgreementService implements AgreementApi {
     private final AgreementSearchRepository searchRepository;
     private final CompanyRepository companyRepository;
     private final AgreementMapper agreementMapper;
+    private final FileMapper fileMapper;
 
     @Override
     public void save(AgreementCreateDto dto) {
@@ -49,15 +51,19 @@ public class AgreementService implements AgreementApi {
         agreement.setSpeciality(dto.getSpeciality());
         agreement.setCompany(company);
 
-        File file = new File();
-        try {
-            file.setName(dto.getFile().getOriginalFilename());
-            file.setData(dto.getFile().getBytes());
-            file.setType(dto.getFile().getContentType());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        agreement.setFile(file);
+        List<File> files = dto.getFiles().stream()
+                .map(file -> {
+                    try {
+                        File fileNew = fileMapper.toFile(file);
+                        fileNew.setAgreement(agreement);
+                        return fileNew;
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .toList();
+
+        agreement.setFiles(files);
 
         agreementRepository.save(agreement);
     }
@@ -70,27 +76,40 @@ public class AgreementService implements AgreementApi {
                 .toList();
     }
 
+    @Transactional
     @Override
     public AgreementViewDto viewById(Long id) {
         Agreement agreement = findById(id);
-        return agreementMapper.toViewDto(agreement);
+        AgreementViewDto dto = agreementMapper.toViewDto(agreement);
+        dto.setFiles(agreement.getFiles().stream()
+                .map(fileMapper::toFileShortDto)
+                .toList()
+        );
+        return dto;
     }
 
+    @Transactional
     @Override
     public void editById(Long id, AgreementEditDto dto) {
         Agreement agreement = findById(id);
         agreementMapper.editFromEditDto(agreement, dto);
-        try {
-            if(!Objects.equals("", dto.getDocument().getOriginalFilename())){
-                File file = agreement.getFile();
-                file.setName(dto.getDocument().getOriginalFilename());
-                file.setData(dto.getDocument().getBytes());
-                file.setType(dto.getDocument().getContentType());
-                agreement.setFile(file);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+        if (!dto.getDocuments().get(0).isEmpty()) {
+            List<File> files = new ArrayList<>(dto.getDocuments().stream()
+                    .map(dtoFile -> {
+                        try {
+                            File file = fileMapper.toFile(dtoFile);
+                            file.setAgreement(agreement);
+                            return file;
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    })
+                    .toList());
+            files.addAll(agreement.getFiles());
+            agreement.setFiles(files);
         }
+
         agreementRepository.save(agreement);
     }
 
@@ -99,9 +118,9 @@ public class AgreementService implements AgreementApi {
         agreementRepository.deleteById(id);
     }
 
-    private Agreement findById(Long id){
+    private Agreement findById(Long id) {
         return agreementRepository.findById(id)
-                .orElseThrow(()->new EntityNotFoundException("Agreement not found!"));
+                .orElseThrow(() -> new EntityNotFoundException("Agreement not found!"));
     }
 
 }

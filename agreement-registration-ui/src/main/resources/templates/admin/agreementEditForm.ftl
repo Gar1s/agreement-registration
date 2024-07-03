@@ -11,10 +11,6 @@
     "TECHNOLOGICAL": "Навчально-технологічна",
     "PRE_DIPLOMA":"Переддипломна"
     } />
-    <#assign basisMap = {
-    "STATUTE": "Статут",
-    "COMMISSION": "Доручення"
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -24,16 +20,25 @@
 
         <div class="row align-items-center">
             <label for="basis" class="col-2 p-0">Підстава:</label>
-            <div class="col p-0">
-                <select class="form-select" id="basis" name="basis">
-                    <option value="${agreement.basis}">${basisMap[agreement.basis?string]}</option>
-                    <#if agreement.basis != "STATUTE">
-                        <option value="STATUTE">Статут</option>
-                    </#if>
-                    <#if agreement.basis != "COMMISSION">
-                        <option value="COMMISSION">Доручення</option>
-                    </#if>
-                </select>
+            <div id="app" class="col p-0 d-grid align-items-center" style="grid-template-columns: 4fr 1fr">
+                <div class="">
+                    <select v-if="optionState === true" class="form-select" id="basis" name="basis">
+                        <option value="${agreement.basis}">${agreement.basis}</option>
+                        <#if agreement.basis != "Статут">
+                            <option value="Статут">Статут</option>
+                        </#if>
+                        <#if agreement.basis != "Доручення">
+                            <option value="Доручення">Доручення</option>
+                        </#if>
+                        <#if agreement.basis != "Виписка з ЄДР">
+                            <option value="Виписка з ЄДР">Виписка з ЄДР</option>
+                        </#if>
+                    </select>
+                    <input v-else class="w-100 form-control" type="text" id="basis" name="basis" placeholder="Введіть...">
+                </div>
+                <div class="text-center">
+                    <i @click="changeState" class="fa-solid fa-rotate fa-lg" style="cursor: pointer"></i>
+                </div>
             </div>
         </div>
         <div class="row align-items-center py-3">
@@ -66,9 +71,9 @@
                     </div>
                 </div>
                 <div class="row align-items-center pt-2">
-                    <label for="file" class="col p-0">Пдф угода:</label>
+                    <label for="file" class="col p-0">Додати файли:</label>
                     <div class="col p-0">
-                        <input type="file" class="form-control" id="file" name="document">
+                        <input type="file" class="form-control" id="file" name="documents" multiple>
                     </div>
                 </div>
             </div>
@@ -139,6 +144,6 @@
         </div>
     </form>
 </div>
-
+<script type="module" src="/js/optionState.js"></script>
 </body>
 </html>

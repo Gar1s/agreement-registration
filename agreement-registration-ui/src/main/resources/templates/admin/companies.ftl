@@ -6,11 +6,6 @@
     <title>Agreements List</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
-    <#assign basisMap = {
-    "STATUTE": "Статут",
-    "COMMISSION": "Доручення",
-    "ORDER": "Розпорядження"
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -33,7 +28,7 @@
             <tr class="align-middle">
                 <th scope="row">${company_index + 1}</th>
                 <td>${company.name}</td>
-                <td>${basisMap[company.basis?string]}</td>
+                <td>${company.basis}</td>
                 <td>${company.position}</td>
                 <td>${company.initials}</td>
                 <td>м. ${company.city}, вул. ${company.street}, ${company.index}</td>

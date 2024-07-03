@@ -1,6 +1,5 @@
 package com.eddev.dto;
 
-import com.eddev.constant.Basis;
 import com.eddev.constant.PracticeType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,6 +11,7 @@ import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,8 +20,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 public class AgreementEditDto {
 
-    @Enumerated(value = EnumType.STRING)
-    private Basis basis;
+    private String basis;
     @Enumerated(value = EnumType.STRING)
     private PracticeType practiceType;
     private LocalDate agreementDate;
@@ -31,6 +30,6 @@ public class AgreementEditDto {
     private String studentInitials;
     private Integer year;
     private String speciality;
-    private MultipartFile document;
+    private List<MultipartFile> documents;
 
 }

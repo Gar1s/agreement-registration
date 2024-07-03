@@ -16,3 +16,6 @@
         font-weight: normal;
     }
 </style>
+
+<script src="https://kit.fontawesome.com/f286795020.js" crossorigin="anonymous"></script>
+

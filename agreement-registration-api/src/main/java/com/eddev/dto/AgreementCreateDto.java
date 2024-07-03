@@ -1,6 +1,5 @@
 package com.eddev.dto;
 
-import com.eddev.constant.Basis;
 import com.eddev.constant.PracticeType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +7,8 @@ import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 public class AgreementCreateDto {
 
     private Long companyId;
-    private Basis basis;
+    private String basis;
     private PracticeType practiceType;
     private LocalDate agreementDate;
     private LocalDate companyAgreementDate;
@@ -24,6 +25,6 @@ public class AgreementCreateDto {
     private String studentInitials;
     private Integer year;
     private String speciality;
-    private MultipartFile file;
+    private List<MultipartFile> files = new ArrayList<>();
 
 }

@@ -12,11 +12,6 @@
     "TECHNOLOGICAL": "Навчально-технологічна",
     "PRE_DIPLOMA":"Переддипломна"
     } />
-    <#assign basisMap = {
-    "STATUTE": "Статут",
-    "COMMISSION": "Доручення",
-    "ORDER": "Розпорядження"
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -31,7 +26,7 @@
             </div>
             <div class="my-2 px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Підстава:</p>
-                ${basisMap[company.basis?string]}
+                ${company.basis}
             </div>
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Адреса:</p>

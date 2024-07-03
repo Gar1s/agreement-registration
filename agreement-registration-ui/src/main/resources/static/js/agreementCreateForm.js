@@ -4,7 +4,8 @@ const {createApp} = Vue;
 createApp({
     data() {
         return {
-            companies: []
+            companies: [],
+            optionState: true
         }
     },
     methods: {
@@ -16,6 +17,9 @@ createApp({
             } catch (error) {
                 console.error('Error fetching:', error);
             }
+        },
+        changeState(){
+            this.optionState = !this.optionState;
         }
     },
     created() {

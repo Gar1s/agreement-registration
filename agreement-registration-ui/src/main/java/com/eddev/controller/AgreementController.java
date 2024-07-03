@@ -29,14 +29,17 @@ public class AgreementController {
     public String getAll(Model model,
                          @RequestParam(required = false, defaultValue = "") String date,
                          @RequestParam(required = false, defaultValue = "") String type,
-                         @RequestParam(required = false, defaultValue = "") String companyName
+                         @RequestParam(required = false, defaultValue = "") String companyName,
+                         @RequestParam(required = false, defaultValue = "") String studentInitials
     ) {
         AgreementsSearchCriteria criteria = AgreementsSearchCriteria.builder()
-                .date(date).practiceType(type).companyName(companyName).build();
+                .date(date).practiceType(type).companyName(companyName)
+                .studentInitials(studentInitials).build();
         Map<String, Object> params = new HashMap<>();
         params.put("searchDate", date);
         params.put("searchPracticeType", type);
         params.put("searchCompanyName", companyName);
+        params.put("searchStudentInitials", studentInitials);
         model.addAttribute("list", agreementApi.getAll(criteria));
         model.addAttribute("params", params);
         return "admin/agreements";

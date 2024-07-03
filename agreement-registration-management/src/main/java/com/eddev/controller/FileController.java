@@ -4,8 +4,10 @@ import com.eddev.api.FileApi;
 import com.eddev.dto.FileDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +33,12 @@ public class FileController {
                         "inline; filename='" + filename + "'")
                 .contentType(MediaType.valueOf(fileDto.getType()))
                 .body(fileDto.getData());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable Long id){
+        fileApi.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

@@ -12,11 +12,6 @@
     "TECHNOLOGICAL": "Навчально-технологічна",
     "PRE_DIPLOMA":"Переддипломна"
     } />
-    <#assign basisMap = {
-    "STATUTE": "Статут",
-    "COMMISSION": "Доручення",
-    "ORDER": "Розпорядження"
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -24,14 +19,14 @@
     <h1 class="text-center my-4 mb-5">Деталі угоди</h1>
 
     <div class="row justify-content-between">
-        <div class="col-6 border border-secondary border-1 rounded-2 p-3">
+        <div class="col-6 border border-secondary border-1 rounded-2 p-3 d-grid align-items-center">
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Номер:</p>
                 ${agreement.id}
             </div>
             <div class="my-2 px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Підстава:</p>
-                ${basisMap[agreement.basis?string]}
+                ${agreement.basis}
             </div>
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Вид практики:</p>
@@ -40,14 +35,18 @@
         </div>
         <div class="col-5 border border-secondary border-1 rounded-2 p-3">
             <div class="px-2 d-flex justify-content-between">
+                <p class="m-0 fw-medium">Дата угоди компанії:</p>
+                ${agreement.companyAgreementDate.format(.globals.dateFormatter)}
+            </div>
+            <div class="my-2 px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Дата угоди:</p>
                 ${agreement.agreementDate.format(.globals.dateFormatter)}
             </div>
-            <div class="my-2 px-2 d-flex justify-content-between">
+            <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Початок:</p>
                 ${agreement.startDate.format(.globals.dateFormatter)}
             </div>
-            <div class="px-2 d-flex justify-content-between">
+            <div class="mt-2 px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Кінець:</p>
                 ${agreement.endDate.format(.globals.dateFormatter)}
             </div>
@@ -56,9 +55,17 @@
 
     <div class="row justify-content-between align-items-center mt-4">
         <div class="col-4 border border-secondary border-1 rounded-2 p-3">
-            <div class="my-2 px-2 d-flex justify-content-between">
-                <p class="m-0 fw-medium">Документ:</p>
-                <a href="/admin/files/${agreement.fileId}" target="_blank">${agreement.fileName}</a>
+            <div class="my-2 px-2">
+                <p class="m-0 fw-medium">Документи:</p>
+                <div class="" id="app" style="font-size: 14px">
+                    <#list agreement.files as file>
+                        <div class="py-2 d-flex justify-content-between align-items-center">
+                            <a href="/admin/files/${file.id}" target="_blank">${file.name}</a>
+                            <span @click="deleteById(${file.id})"
+                                  class="text-danger" style="cursor: pointer">X</span>
+                        </div>
+                    </#list>
+                </div>
             </div>
         </div>
         <div class="col-7 border border-secondary border-1 rounded-2 p-3">
@@ -87,7 +94,7 @@
             </div>
             <div class="px-2 my-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Підстава:</p>
-                ${basisMap[agreement.companyDto.basis?string]}
+                ${agreement.companyDto.basis}
             </div>
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Посада:</p>
@@ -96,10 +103,6 @@
             <div class="px-2 my-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Ініціали керівника:</p>
                 ${agreement.companyDto.initials}
-            </div>
-            <div class="px-2 d-flex justify-content-between">
-                <p class="m-0 fw-medium">Дата угоди:</p>
-                ${agreement.companyAgreementDate.format(.globals.dateFormatter)}
             </div>
             <div class="px-2 mt-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Адреса:</p>
@@ -121,6 +124,7 @@
     </div>
 
 </div>
-
+<input type="hidden" id="baseUrl" value="${.globals.baseUrl!}">
+<script type="module" src="/js/agreement.js"></script>
 </body>
 </html>

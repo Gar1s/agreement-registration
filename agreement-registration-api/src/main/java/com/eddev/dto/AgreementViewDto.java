@@ -1,6 +1,5 @@
 package com.eddev.dto;
 
-import com.eddev.constant.Basis;
 import com.eddev.constant.PracticeType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -9,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,8 +17,7 @@ import java.time.LocalDate;
 public class AgreementViewDto {
 
     private Long id;
-    @Enumerated(value = EnumType.STRING)
-    private Basis basis;
+    private String basis;
     @Enumerated(value = EnumType.STRING)
     private PracticeType practiceType;
     private LocalDate agreementDate;
@@ -28,7 +28,6 @@ public class AgreementViewDto {
     private Integer year;
     private String speciality;
     private CompanyDto companyDto;
-    private Long fileId;
-    private String fileName;
+    private List<FileShortDto> files = new ArrayList<>();
 
 }

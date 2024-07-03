@@ -7,4 +7,6 @@ public interface FileApi {
 
     FileDto viewById(Long id);
 
+    void deleteById(Long id);
+
 }
