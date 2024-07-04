@@ -95,8 +95,7 @@
         <tbody>
         <#list list as agreement>
             <tr class="align-middle">
-                <th scope="row">${agreement.companyAgreementDate.year?substring(3)}
-                    -${(agreement_index + 1)?string["00"]}</th>
+                <th scope="row">${agreement.companyAgreementDate.year?substring(3)}-${(agreement_index + 1)?string["00"]}</th>
                 <td><a href="/admin/companies/${agreement.companyId}">${agreement.companyName}</a></td>
                 <td>${practiceTypeMap[agreement.practiceType?string]}</td>
                 <td>${agreement.companyAgreementDate.format(.globals.dateFormatter)}</td>
