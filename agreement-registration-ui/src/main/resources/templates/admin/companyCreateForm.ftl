@@ -72,6 +72,7 @@
         <div class="text-center my-3">
             <button type="submit" class="btn btn-primary">Додати</button>
         </div>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     </form>
 </div>
 <script type="module" src="/js/optionState.js"></script>

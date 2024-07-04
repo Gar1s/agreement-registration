@@ -82,6 +82,7 @@
             </a>
             <button type="submit" class="btn btn-primary">Змінити</button>
         </div>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     </form>
 </div>
 <script type="module" src="/js/optionState.js"></script>

@@ -70,10 +70,12 @@
         <#if company.agreementIds?size == 0>
             <form action="${.globals.baseUrl}/admin/companies/${company.id}/delete" method="post" class="ms-1">
                 <button type="submit" class="btn btn-danger">Вилучити</button>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
             </form>
         <#else>
             <form action="${.globals.baseUrl}/admin/companies/${company.id}/delete" method="post" class="ms-1">
                 <button type="submit" class="btn btn-secondary disabled">Вилучити</button>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
             </form>
         </#if>
     </div>

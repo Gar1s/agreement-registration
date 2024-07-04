@@ -118,6 +118,7 @@
                 </a>
                 <form action="${.globals.baseUrl}/admin/agreements/${agreement.id}/delete" method="post" class="my-2">
                     <button type="submit" class="btn btn-danger">Вилучити</button>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 </form>
             </div>
         </div>

@@ -13,8 +13,8 @@ spring:
     suffix: ".ftl"
   servlet:
     multipart:
-      max-file-size: 200KB
-      max-request-size: 200KB
+      max-file-size: 1GB
+      max-request-size: 1GB
 
 security-user:
   name: ${ADMIN_USERNAME:admin}
