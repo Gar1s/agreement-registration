@@ -6,6 +6,7 @@
     <title>Agreements List</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
+    <#import "../component/model.ftl" as modal>
     <#assign practiceTypeMap = {
     "STUDY": "Навчальна",
     "MANUFACTURE": "Виробнича",
@@ -68,20 +69,17 @@
             <button type="button" class="btn btn-primary">Редагувати</button>
         </a>
         <#if company.agreementIds?size == 0>
-            <form action="${.globals.baseUrl}/admin/companies/${company.id}/delete" method="post" class="ms-1">
-                <button type="submit" class="btn btn-danger">Вилучити</button>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-            </form>
+            <button class="btn btn-danger ms-1"
+                    onclick="document.getElementById('id01').style.display='flex'">Видалити
+            </button>
         <#else>
-            <form action="${.globals.baseUrl}/admin/companies/${company.id}/delete" method="post" class="ms-1">
-                <button type="submit" class="btn btn-secondary disabled">Вилучити</button>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-            </form>
+            <button class="btn btn-secondary disabled ms-1"
+                    onclick="document.getElementById('id01').style.display='flex'">Видалити
+            </button>
         </#if>
     </div>
 </div>
-
-</div>
+<@modal.model '${.globals.baseUrl}/admin/companies/${company.id}/delete' 'компанію'/>
 
 </body>
 </html>

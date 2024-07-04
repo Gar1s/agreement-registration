@@ -6,6 +6,7 @@
     <title>Agreements List</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
+    <#import "../component/model.ftl" as modal>
     <#assign practiceTypeMap = {
     "STUDY": "Навчальна",
     "MANUFACTURE": "Виробнича",
@@ -116,13 +117,12 @@
                 <a href="${.globals.baseUrl}/admin/agreements/${agreement.id}/edit" class="my-2">
                     <button type="button" class="btn btn-primary">Редагувати</button>
                 </a>
-                <form action="${.globals.baseUrl}/admin/agreements/${agreement.id}/delete" method="post" class="my-2">
-                    <button type="submit" class="btn btn-danger">Вилучити</button>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                </form>
+                <button class="btn btn-danger my-2"
+                        onclick="document.getElementById('id01').style.display='flex'">Видалити</button>
             </div>
         </div>
     </div>
+    <@modal.model '${.globals.baseUrl}/admin/agreements/${agreement.id}/delete' 'угоду'/>
 
 </div>
 <input type="hidden" id="baseUrl" value="${.globals.baseUrl!}">
