@@ -15,7 +15,7 @@
         <div class="row align-items-center">
             <label for="name" class="col-2 p-0">Назва:</label>
             <div class="col p-0">
-                <input type="text" class="form-control" id="name" name="name" value="${company.name}">
+                <input type="text" class="form-control" id="name" name="name" value="${company.name?html}">
             </div>
         </div>
 
