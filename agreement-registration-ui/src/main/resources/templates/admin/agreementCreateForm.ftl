@@ -54,16 +54,16 @@
             <div class="row py-4">
                 <div class="col me-5">
                     <div class="row align-items-center pb-2">
-                        <label for="agreementDate" class="col p-0">Дата угоди:</label>
-                        <div class="col p-0">
-                            <input type="date" class="form-control" id="agreementDate" name="agreementDate">
-                        </div>
-                    </div>
-                    <div class="row align-items-center pt-2">
                         <label for="companyAgreementDate" class="col p-0">Дата угоди компанії:</label>
                         <div class="col p-0">
                             <input type="date" class="form-control" id="companyAgreementDate"
                                    name="companyAgreementDate">
+                        </div>
+                    </div>
+                    <div class="row align-items-center pt-2">
+                        <label for="agreementDate" class="col p-0">Дата оформлення угоди:</label>
+                        <div class="col p-0">
+                            <input type="date" class="form-control" id="agreementDate" name="agreementDate">
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-            <div class="row py-4">
+            <div class="row py-2">
                 <div class="col-6 me-5 row align-items-center">
                     <label for="studentInitials" class="col-3 p-0">Ініціали студента:</label>
                     <div class="col p-0">

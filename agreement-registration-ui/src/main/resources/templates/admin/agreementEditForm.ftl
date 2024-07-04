@@ -65,19 +65,19 @@
         <div class="row">
             <div class="col me-5">
                 <div class="row align-items-center pb-2">
-                    <label for="agreementDate" class="col p-0">Дата угоди:</label>
+                    <label for="companyAgreementDate" class="col p-0">Дата угоди компанії:</label>
+                    <div class="col p-0">
+                        <input type="date" class="form-control" id="companyAgreementDate" name="companyAgreementDate" value="${agreement.companyAgreementDate}">
+                    </div>
+                </div>
+                <div class="row align-items-center py-2">
+                    <label for="agreementDate" class="col p-0">Дата оформлення угоди:</label>
                     <div class="col p-0">
                         <input type="date" class="form-control" id="agreementDate" name="agreementDate" value="${agreement.agreementDate}">
                     </div>
                 </div>
-                <div class="row align-items-center pt-2">
-                    <label for="file" class="col p-0">Додати файли:</label>
-                    <div class="col p-0">
-                        <input type="file" class="form-control" id="file" name="documents" multiple>
-                    </div>
-                </div>
             </div>
-            <div class="col">
+            <div class="col-5">
                 <div class="row align-items-center pb-2">
                     <label for="startDate" class="col">Дата початку:</label>
                     <div class="col p-0">
@@ -90,6 +90,12 @@
                         <input type="date" class="form-control" id="endDate" name="endDate" value="${agreement.endDate}">
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row align-items-center pt-2">
+            <label for="file" class="col-3 p-0">Додати файли:</label>
+            <div class="col p-0">
+                <input type="file" class="form-control" id="file" name="documents" multiple>
             </div>
         </div>
 
@@ -124,15 +130,6 @@
                 <select class="form-select" id="speciality" name="speciality">
                     <option value="121">121 - Інженерія Програмного Забезпечення</option>
                 </select>
-            </div>
-        </div>
-
-        <h5 class="m-0 p-0 pb-4 pt-4">Дані компанії:</h5>
-
-        <div class="row align-items-center">
-            <label for="companyAgreementDate" class="col-2 p-0">Дата угоди:</label>
-            <div class="col p-0">
-                <input type="date" class="form-control" id="companyAgreementDate" name="companyAgreementDate" value="${agreement.companyAgreementDate}">
             </div>
         </div>
 
