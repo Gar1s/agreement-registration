@@ -7,6 +7,7 @@
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
     <#import "../component/model.ftl" as modal>
+    <#import "../component/modelNonForm.ftl" as modelNonForm>
     <#assign practiceTypeMap = {
     "STUDY": "Навчальна",
     "MANUFACTURE": "Виробнича",
@@ -62,8 +63,9 @@
                     <#list agreement.files as file>
                         <div class="py-2 d-flex justify-content-between align-items-center">
                             <a href="/admin/files/${file.id}" target="_blank">${file.name}</a>
-                            <span @click="deleteById(${file.id})"
+                            <span onclick="document.getElementById('id02').style.display='flex'"
                                   class="text-danger" style="cursor: pointer">X</span>
+                            <@modelNonForm.model 'deleteById(${file.id})' 'файл' '${file.name}'/>
                         </div>
                     </#list>
                 </div>
