@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-files-token" content="${_csrf.token}">
     <title>Agreements List</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
