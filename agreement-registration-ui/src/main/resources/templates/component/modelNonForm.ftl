@@ -1,4 +1,4 @@
-<#macro model method name desc>
+<#macro modelNonForm name>
     <style>
         .buttonM {
             background-color: #04AA6D;
@@ -63,26 +63,19 @@
             display: table;
         }
     </style>
-    <div id="id02" class="modal">
-        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <div class="modal" :style="modalDisplay" @click="disableModel">
+        <span @click="disableModel" class="close" title="Close Modal">&times;</span>
         <div class="modal-content">
             <div class="containerM">
                 <h1>Видалити ${name}</h1>
-                <p style="margin: 1rem 0">Ви точно хочете видалити ${name} - ${desc}?</p>
+                <p style="margin: 1rem 0">Ви точно хочете видалити ${name} - {{ fileName }}?</p>
                 <div class="clearfix">
-                    <button onclick="document.getElementById('id02').style.display='none'"
+                    <button @click="disableModel"
                             type="button" class="cancelbtn buttonM">Скасувати</button>
-                    <button @click="${method}" type="submit" class="deletebtn buttonM">Видалити</button>
+                    <button @click="deleteById"
+                            type="submit" class="deletebtn buttonM">Видалити</button>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        let modal = document.getElementById('id02');
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 </#macro>

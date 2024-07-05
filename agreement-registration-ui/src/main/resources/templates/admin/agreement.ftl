@@ -63,11 +63,11 @@
                     <#list agreement.files as file>
                         <div class="py-2 d-flex justify-content-between align-items-center">
                             <a href="/admin/files/${file.id}" target="_blank">${file.name}</a>
-                            <span onclick="document.getElementById('id02').style.display='flex'"
+                            <span @click="enableModel('${file.id}','${file.name}')"
                                   class="text-danger" style="cursor: pointer">X</span>
-                            <@modelNonForm.model 'deleteById(${file.id})' 'файл' '${file.name}'/>
                         </div>
                     </#list>
+                    <@modelNonForm.modelNonForm 'файл'/>
                 </div>
             </div>
         </div>
@@ -120,7 +120,8 @@
                     <button type="button" class="btn btn-primary">Редагувати</button>
                 </a>
                 <button class="btn btn-danger my-2"
-                        onclick="document.getElementById('id01').style.display='flex'">Видалити</button>
+                        onclick="document.getElementById('id01').style.display='flex'">Видалити
+                </button>
             </div>
         </div>
     </div>
