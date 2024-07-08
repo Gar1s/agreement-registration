@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-files-token" content="${_csrf.token}">
     <title>Agreements List</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
+    <#import "../component/model.ftl" as modal>
+    <#import "../component/modelNonForm.ftl" as modelNonForm>
     <#assign practiceTypeMap = {
     "STUDY": "Навчальна",
     "MANUFACTURE": "Виробнича",
@@ -61,10 +64,11 @@
                     <#list agreement.files as file>
                         <div class="py-2 d-flex justify-content-between align-items-center">
                             <a href="/admin/files/${file.id}" target="_blank">${file.name}</a>
-                            <span @click="deleteById(${file.id})"
+                            <span @click="enableModel('${file.id}','${file.name}')"
                                   class="text-danger" style="cursor: pointer">X</span>
                         </div>
                     </#list>
+                    <@modelNonForm.modelNonForm 'файл'/>
                 </div>
             </div>
         </div>
@@ -116,13 +120,13 @@
                 <a href="${.globals.baseUrl}/admin/agreements/${agreement.id}/edit" class="my-2">
                     <button type="button" class="btn btn-primary">Редагувати</button>
                 </a>
-                <form action="${.globals.baseUrl}/admin/agreements/${agreement.id}/delete" method="post" class="my-2">
-                    <button type="submit" class="btn btn-danger">Вилучити</button>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                </form>
+                <button class="btn btn-danger my-2"
+                        onclick="document.getElementById('id01').style.display='flex'">Видалити
+                </button>
             </div>
         </div>
     </div>
+    <@modal.model '${.globals.baseUrl}/admin/agreements/${agreement.id}/delete' 'угоду'/>
 
 </div>
 <input type="hidden" id="baseUrl" value="${.globals.baseUrl!}">
