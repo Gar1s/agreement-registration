@@ -1,8 +1,15 @@
 package com.eddev.constant;
 
 public enum PracticeType {
-    STUDY,
-    MANUFACTURE,
-    TECHNOLOGICAL,
-    PRE_DIPLOMA
+    STUDY("Навчальна"),
+    MANUFACTURE("Виробнича"),
+    TECHNOLOGICAL("Навчально-технологічна"),
+    PRE_DIPLOMA("Переддипломна");
+
+    public final String label;
+
+    PracticeType(String label){
+        this.label = label;
+    }
+
 }
