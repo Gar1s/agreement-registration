@@ -15,7 +15,7 @@
         <div class="row align-items-center">
             <label for="name" class="col-2 p-0">Назва:</label>
             <div class="col p-0">
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
         </div>
 
@@ -28,7 +28,7 @@
                         <option value="Доручення">Доручення</option>
                         <option value="Розпорядження">Розпорядження</option>
                     </select>
-                    <input v-else class="w-100 form-control" type="text" id="basis" name="basis" placeholder="Введіть...">
+                    <input v-else class="w-100 form-control" type="text" id="basis" name="basis" placeholder="Введіть..." required>
                 </div>
                 <div class="text-center">
                     <i @click="changeState" class="fa-solid fa-rotate fa-lg" style="cursor: pointer"></i>
@@ -39,21 +39,21 @@
         <div class="row align-items-center">
             <label for="position" class="col-3 p-0">Посада:</label>
             <div class="col p-0">
-                <input type="text" class="form-control" id="position" name="position">
+                <input type="text" class="form-control" id="position" name="position" required>
             </div>
         </div>
 
         <div class="row align-items-center py-3">
             <label for="initials" class="col-3 p-0">Ініціали керівника:</label>
             <div class="col p-0">
-                <input type="text" class="form-control" id="initials" name="initials">
+                <input type="text" class="form-control" id="initials" name="initials" required>
             </div>
         </div>
 
         <div class="row align-items-center">
             <label for="city" class="col-2 p-0">Місто:</label>
             <div class="col p-0">
-                <input type="text" class="form-control" id="city" name="city">
+                <input type="text" class="form-control" id="city" name="city" required>
             </div>
         </div>
         <div class="row align-items-center py-3">
