@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-files-token" content="${_csrf.token}">
     <title>Agreements List</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
@@ -74,8 +75,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2 text-center">
-                    <button class="btn btn-outline-success" type="submit">Пошук</button>
+                <div class="col-2 text-center d-grid">
+                    <button class="btn btn-outline-primary my-2" type="submit">Пошук</button>
+                    <button onclick="generateExcel()" class="btn btn-outline-success my-2" type="button">.xls</button>
                 </div>
             </div>
         </form>
@@ -119,6 +121,7 @@
     let init = "${params['searchStudentInitials']}";
     let date = "${params['searchDate']}";
     let comName = "${params['searchCompanyName']}";
+    const csrfToken = document.querySelector('meta[name="csrf-files-token"]').getAttribute('content');
 
     if (isEmpty(type, init, date, comName)) {
         document.getElementById("toggleDiv").style.display = "none";
@@ -134,8 +137,46 @@
             x.style.display = "none";
         }
     }
+
     function isEmpty(type, init, date, comName) {
         return type === "" && init === "" && date === "" && comName === "";
+    }
+
+    function generateExcel() {
+        let agreements = [
+            <#list list as agreement>
+            {
+                "id": ${agreement.id},
+                "companyName": "${agreement.companyName?json_string}",
+                "practiceType": "${agreement.practiceType}",
+                "companyAgreementDate": "${agreement.companyAgreementDate}",
+                "startDate": "${agreement.startDate}",
+                "endDate": "${agreement.endDate}",
+                "studentInitials": "${agreement.studentInitials}"
+            }<#if agreement?has_next>, </#if>
+            </#list>
+        ];
+
+        fetch("${.globals.baseUrl}/api/admin/reports/agreementExcel", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken
+            },
+            body: JSON.stringify(agreements)
+        })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'угоди.xls';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => console.error('Download failed:', error));
     }
 </script>
 </body>
