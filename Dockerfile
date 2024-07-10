@@ -2,7 +2,7 @@ FROM maven:3.8.5-openjdk-17 AS build
 COPY . .
 RUN mvn clean package -DskipTests
 
-FROM openjdk:17.0.1-jdk-slim
+FROM openjdk:17.0.1-jdk
 COPY --from=build agreement-registration-api/target/agreement-registration-api-2.1.0.jar agreement-registration-api.jar
 COPY --from=build agreement-registration-app/target/agreementregistrationapp-2.1.0.jar agreementregistrationapp.jar
 COPY --from=build agreement-registration-common/target/agreementregistrationcommon-2.1.0.jar agreementregistrationcommon.jar
