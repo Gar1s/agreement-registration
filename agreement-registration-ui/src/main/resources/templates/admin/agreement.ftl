@@ -25,7 +25,7 @@
         <div class="col-6 border border-secondary border-1 rounded-2 p-3 d-grid align-items-center">
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Номер:</p>
-                ${agreement.id}
+                ${agreement.numeration}
             </div>
             <div class="my-2 px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Підстава:</p>

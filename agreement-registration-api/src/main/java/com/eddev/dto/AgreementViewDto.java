@@ -27,6 +27,7 @@ public class AgreementViewDto {
     private String studentInitials;
     private Integer year;
     private String speciality;
+    private String numeration;
     private CompanyDto companyDto;
     private List<FileShortDto> files = new ArrayList<>();
 
