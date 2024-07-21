@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -19,6 +19,6 @@ public class CompanyViewDto {
     private String city;
     private String street;
     private String index;
-    private List<Long> agreementIds;
+    private Map<Long, String> agreementIds;
 
 }

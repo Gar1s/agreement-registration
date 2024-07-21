@@ -1,7 +1,6 @@
 package com.eddev.service;
 
 import com.eddev.api.CompanyApi;
-import com.eddev.domain.Agreement;
 import com.eddev.domain.Company;
 import com.eddev.dto.CompanyCreateDto;
 import com.eddev.dto.CompanyDto;
@@ -14,7 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -40,10 +41,10 @@ public class CompanyService implements CompanyApi {
     public CompanyViewDto viewById(Long id) {
         Company company = findById(id);
         CompanyViewDto dto = companyMapper.toViewDto(company);
-        dto.setAgreementIds(company.getAgreements().stream()
-                .map(Agreement::getId)
-                .toList()
-        );
+        Map<Long, String> map = new HashMap<>();
+        company.getAgreements()
+                .forEach(item -> map.put(item.getId(), item.getNumeration()));
+        dto.setAgreementIds(map);
         return dto;
     }
 
