@@ -49,6 +49,7 @@ public class AgreementService implements AgreementApi {
         agreement.setStudentInitials(dto.getStudentInitials());
         agreement.setYear(dto.getYear());
         agreement.setSpeciality(dto.getSpeciality());
+        agreement.setNumeration(dto.getNumeration());
         agreement.setCompany(company);
 
         List<File> files = dto.getFiles().stream()

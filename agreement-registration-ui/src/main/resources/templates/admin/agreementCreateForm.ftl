@@ -13,6 +13,13 @@
         <h1 class="text-center my-4 mb-5">Заповніть угоду</h1>
         <form id="agreementForm" action="/admin/agreements" method="post" enctype="multipart/form-data">
 
+            <div class="row align-items-center pb-3">
+                <label for="numeration" class="col-2 p-0">Номер угоди:</label>
+                <div class="col p-0">
+                    <input type="text" class="form-control" id="numeration" name="numeration" required>
+                </div>
+            </div>
+
             <div class="row align-items-center">
                 <label for="companyName" class="col-2 p-0">База практики:</label>
                 <div class="col p-0">
