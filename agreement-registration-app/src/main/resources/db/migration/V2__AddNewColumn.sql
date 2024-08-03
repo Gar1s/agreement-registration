@@ -1,0 +1,1 @@
+alter table agreements add column numeration varchar(200) unique not null default 'Не вказано'

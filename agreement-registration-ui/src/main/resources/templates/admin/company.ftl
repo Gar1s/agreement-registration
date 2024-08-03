@@ -50,14 +50,16 @@
     <table class="table text-start m-0 w-25">
         <thead>
         <tr class="fs-6">
-            <th scope="col" class="py-2">Номер</th>
+            <th scope="col" class="py-2">#</th>
+            <th scope="col" class="">Номер угоди</th>
         </tr>
         </thead>
         <tbody>
-        <#list company.agreementIds as id>
+        <#list company.agreementIds as key, value>
             <tr class="align-start">
-                <th scope="row">
-                    <a href="/admin/agreements/${id}">${id}</a>
+                <th scope="row">${key_index + 1}</th>
+                <th>
+                    <a href="/admin/agreements/${key}">${value}</a>
                 </th>
             </tr>
         </#list>

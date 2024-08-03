@@ -17,7 +17,7 @@
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
-<div class="container col-10">
+<div class="container col-11">
     <h1 class="text-center my-4">Всі угоди
         <span class="text-success ps-2">
             <i onclick="visibilityChange()" class="fa-solid fa-magnifying-glass fa-fade fa-sm"
@@ -88,8 +88,8 @@
             <th scope="col" class="py-4">#</th>
             <th scope="col" class="py-4">База практики</th>
             <th scope="col" class="py-4">Вид практики</th>
-            <th scope="col" class="py-4">Дата угоди</th>
-            <th scope="col" class="py-4">Термін дії</th>
+            <th scope="col" class="py-4 px-3">Дата угоди</th>
+            <th scope="col" class="py-4 px-3">Термін дії</th>
             <th scope="col" class="py-4">Ініціали cтудента</th>
             <th scope="col" class="py-4"></th>
         </tr>
@@ -97,7 +97,7 @@
         <tbody>
         <#list list as agreement>
             <tr class="align-middle">
-                <th scope="row">${agreement.companyAgreementDate.year?substring(3)}-${(agreement_index + 1)?string["00"]}</th>
+                <th scope="row">${agreement.numeration}</th>
                 <td><a href="/admin/companies/${agreement.companyId}">${agreement.companyName}</a></td>
                 <td>${practiceTypeMap[agreement.practiceType?string]}</td>
                 <td>${agreement.companyAgreementDate.format(.globals.dateFormatter)}</td>
@@ -152,7 +152,8 @@
                 "companyAgreementDate": "${agreement.companyAgreementDate}",
                 "startDate": "${agreement.startDate}",
                 "endDate": "${agreement.endDate}",
-                "studentInitials": "${agreement.studentInitials}"
+                "studentInitials": "${agreement.studentInitials}",
+                "numeration": "${agreement.numeration}"
             }<#if agreement?has_next>, </#if>
             </#list>
         ];

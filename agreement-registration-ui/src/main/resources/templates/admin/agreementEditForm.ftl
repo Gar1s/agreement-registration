@@ -18,6 +18,13 @@
     <h1 class="text-center my-4 mb-5">Внесіть зміни</h1>
     <form action="/admin/agreements/${agreement.id}/edit" method="post" enctype="multipart/form-data">
 
+        <div class="row align-items-center pb-3">
+            <label for="numeration" class="col-2 p-0">Номер угоди:</label>
+            <div class="col p-0">
+                <input type="text" class="form-control" id="numeration" name="numeration" value="${agreement.numeration}">
+            </div>
+        </div>
+
         <div class="row align-items-center">
             <label for="basis" class="col-2 p-0">Підстава:</label>
             <div id="app" class="col p-0 d-grid align-items-center" style="grid-template-columns: 4fr 1fr">

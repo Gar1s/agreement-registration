@@ -42,6 +42,7 @@ public class Agreement {
     private String studentInitials;
     private Integer year;
     private String speciality;
+    private String numeration;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "agreement", cascade = CascadeType.ALL)

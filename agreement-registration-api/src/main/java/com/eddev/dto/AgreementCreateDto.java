@@ -25,6 +25,7 @@ public class AgreementCreateDto {
     private String studentInitials;
     private Integer year;
     private String speciality;
+    private String numeration;
     private List<MultipartFile> files = new ArrayList<>();
 
 }

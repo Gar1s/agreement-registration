@@ -36,11 +36,12 @@ public class ReportService {
         headerCellStyle.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
 
         row.createCell(0).setCellValue("#");
-        row.createCell(1).setCellValue("База практики");
-        row.createCell(2).setCellValue("Вид практики");
-        row.createCell(3).setCellValue("Дата угоди");
-        row.createCell(4).setCellValue("Термін дії");
-        row.createCell(5).setCellValue("Ініціали cтудента");
+        row.createCell(1).setCellValue("Номер угоди");
+        row.createCell(2).setCellValue("База практики");
+        row.createCell(3).setCellValue("Вид практики");
+        row.createCell(4).setCellValue("Дата угоди");
+        row.createCell(5).setCellValue("Термін дії");
+        row.createCell(6).setCellValue("Ініціали cтудента");
         for (Cell cell : row) {
             cell.setCellStyle(headerCellStyle);
         }
@@ -48,16 +49,17 @@ public class ReportService {
         for (AgreementDto agreement : agreements) {
             HSSFRow dataRow = sheet.createRow(dataRowIndex);
             dataRow.createCell(0).setCellValue(dataRowIndex);
-            dataRow.createCell(1).setCellValue(agreement.getCompanyName());
-            dataRow.createCell(2).setCellValue(agreement.getPracticeType().label);
-            dataRow.createCell(3).setCellValue(agreement.getCompanyAgreementDate().format(DATE_TIME_FORMATTER));
-            dataRow.createCell(4).setCellValue(
+            dataRow.createCell(1).setCellValue(agreement.getNumeration());
+            dataRow.createCell(2).setCellValue(agreement.getCompanyName());
+            dataRow.createCell(3).setCellValue(agreement.getPracticeType().label);
+            dataRow.createCell(4).setCellValue(agreement.getCompanyAgreementDate().format(DATE_TIME_FORMATTER));
+            dataRow.createCell(5).setCellValue(
                     agreement.getStartDate().format(DATE_TIME_FORMATTER) + " - " +
                             agreement.getEndDate().format(DATE_TIME_FORMATTER));
-            dataRow.createCell(5).setCellValue(agreement.getStudentInitials());
+            dataRow.createCell(6).setCellValue(agreement.getStudentInitials());
             dataRowIndex++;
         }
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
             sheet.autoSizeColumn(i);
         }
         return book;
