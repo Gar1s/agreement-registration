@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
@@ -53,6 +54,16 @@ public class AgreementSearchRepositoryImpl implements AgreementSearchRepository{
         criteriaQuery.where(
                 criteriaBuilder.and(predicates.toArray(new Predicate[0]))
         );
+
+        Expression<String> numeration = root.get("numeration");
+        Expression<String> lastTwoDigits = criteriaBuilder.substring(numeration, 19);
+        Expression<String> twoDigitsBeforeLastTwoDigits = criteriaBuilder.substring(numeration, 16, 2);
+
+        criteriaQuery.orderBy(
+                criteriaBuilder.desc(twoDigitsBeforeLastTwoDigits),
+                criteriaBuilder.asc(lastTwoDigits)
+        );
+
         TypedQuery<Agreement> query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();
     }

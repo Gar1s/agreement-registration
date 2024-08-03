@@ -1,7 +1,7 @@
 spring:
   datasource:
-    url: ${URL:jdbc:postgresql://localhost:5432/AgreementRegistration}
-    username: ${USERNAME:postgres}
+    url: ${URL}
+    username: ${USERNAME}
     password: ${PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
@@ -17,7 +17,7 @@ spring:
       max-request-size: 1GB
 
 security-user:
-  name: ${ADMIN_USERNAME:admin}
-  password: ${ADMIN_PASSWORD:admin}
+  name: ${ADMIN_USERNAME}
+  password: ${ADMIN_PASSWORD}
 
-baseUrl: ${BASE_URL:http://localhost:8080}
+baseUrl: ${BASE_URL}

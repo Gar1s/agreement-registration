@@ -88,7 +88,7 @@
             <th scope="col" class="py-4">#</th>
             <th scope="col" class="py-4">База практики</th>
             <th scope="col" class="py-4">Вид практики</th>
-            <th scope="col" class="py-4">Дата угоди</th>
+            <th scope="col" class="py-4 px-3">Дата угоди</th>
             <th scope="col" class="py-4 px-3">Термін дії</th>
             <th scope="col" class="py-4">Ініціали cтудента</th>
             <th scope="col" class="py-4"></th>
