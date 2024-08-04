@@ -21,7 +21,9 @@
         <div class="row align-items-center pb-3">
             <label for="numeration" class="col-2 p-0">Номер угоди:</label>
             <div class="col p-0">
-                <input type="text" class="form-control" id="numeration" name="numeration" value="${agreement.numeration}">
+                <input type="text" class="form-control" id="numeration" name="numeration" value="${agreement.numeration}"
+                       placeholder="Формат: 06-09/06/10-07/hh-nn"
+                       pattern="\d{2}-\d{2}/\d{2}/\d{2}-\d{2}/\d{2}-\d{1,}">
             </div>
         </div>
 

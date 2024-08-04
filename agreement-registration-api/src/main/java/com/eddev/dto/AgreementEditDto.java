@@ -3,6 +3,7 @@ package com.eddev.dto;
 import com.eddev.constant.PracticeType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +31,11 @@ public class AgreementEditDto {
     private String studentInitials;
     private Integer year;
     private String speciality;
+    @Setter(AccessLevel.NONE)
     private String numeration;
     private List<MultipartFile> documents;
 
+    public void setNumeration(String numeration) {
+        this.numeration = numeration.trim();
+    }
 }
