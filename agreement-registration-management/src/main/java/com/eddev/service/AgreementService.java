@@ -95,10 +95,12 @@ public class AgreementService implements AgreementApi {
     @Transactional
     @Override
     public void editById(Long id, AgreementEditDto dto) {
-        if (agreementRepository.existsByNumeration(dto.getNumeration())) {
-            throw new EntityExistsException("Угода за таким номером: " + dto.getNumeration() + " існує!");
-        }
         Agreement agreement = findById(id);
+        if (!agreement.getNumeration().equals(dto.getNumeration())){
+            if (agreementRepository.existsByNumeration(dto.getNumeration())) {
+                throw new EntityExistsException("Угода за таким номером: " + dto.getNumeration() + " існує!");
+            }
+        }
         agreementMapper.editFromEditDto(agreement, dto);
 
         if (!dto.getDocuments().get(0).isEmpty()) {
