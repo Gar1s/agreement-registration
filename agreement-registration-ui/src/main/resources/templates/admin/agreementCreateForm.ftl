@@ -16,7 +16,11 @@
             <div class="row align-items-center pb-3">
                 <label for="numeration" class="col-2 p-0">Номер угоди:</label>
                 <div class="col p-0">
-                    <input type="text" class="form-control" id="numeration" name="numeration" required>
+                    <input type="text" class="form-control" id="numeration" name="numeration" required
+                           placeholder="Формат: 06-09/06/10-07/hh-nn"
+                           value="06-09/06/10-07/"
+                           pattern="\d{2}-\d{2}/\d{2}/\d{2}-\d{2}/\d{2}-\d{1,}"
+                    >
                 </div>
             </div>
 
@@ -24,7 +28,7 @@
                 <label for="companyName" class="col-2 p-0">База практики:</label>
                 <div class="col p-0">
                     <div v-if="companies.length == 0">
-                        <a href="http://localhost:8080/admin/companies/create" class="nav-link text-primary">Додайти компанію</a>
+                        <a href="${.globals.baseUrl!}/admin/companies/create" class="nav-link text-primary">Додайти компанію</a>
                     </div>
                     <select v-else class="form-select" id="companyName" name="companyId" required>
                         <option v-for="company in companies" :key="company.id"

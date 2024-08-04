@@ -14,6 +14,7 @@ import com.eddev.repository.AgreementRepository;
 import com.eddev.repository.AgreementSearchRepository;
 import com.eddev.repository.CompanyRepository;
 import com.eddev.search.AgreementsSearchCriteria;
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,9 @@ public class AgreementService implements AgreementApi {
 
     @Override
     public void save(AgreementCreateDto dto) {
-
+        if (agreementRepository.existsByNumeration(dto.getNumeration())) {
+            throw new EntityExistsException("Угода за таким номером: " + dto.getNumeration() + " існує!");
+        }
         Company company = companyRepository.findById(dto.getCompanyId())
                 .orElseThrow(() -> new EntityNotFoundException("Company not found"));
 
@@ -92,6 +95,9 @@ public class AgreementService implements AgreementApi {
     @Transactional
     @Override
     public void editById(Long id, AgreementEditDto dto) {
+        if (agreementRepository.existsByNumeration(dto.getNumeration())) {
+            throw new EntityExistsException("Угода за таким номером: " + dto.getNumeration() + " існує!");
+        }
         Agreement agreement = findById(id);
         agreementMapper.editFromEditDto(agreement, dto);
 

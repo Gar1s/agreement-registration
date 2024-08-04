@@ -1,6 +1,7 @@
 package com.eddev.dto;
 
 import com.eddev.constant.PracticeType;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,7 +26,11 @@ public class AgreementCreateDto {
     private String studentInitials;
     private Integer year;
     private String speciality;
+    @Setter(AccessLevel.NONE)
     private String numeration;
     private List<MultipartFile> files = new ArrayList<>();
 
+    public void setNumeration(String numeration) {
+        this.numeration = numeration.trim();
+    }
 }
