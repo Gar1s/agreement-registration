@@ -18,7 +18,7 @@
                 <div class="col p-0">
                     <input type="text" class="form-control" id="numeration" name="numeration" required
                            placeholder="Формат: 06-09/06/10-07/hh-nn"
-                           value="06-09/06/10-07/"
+                           :value="numeration"
                            pattern="\d{2}-\d{2}/\d{2}/\d{2}-\d{2}/\d{2}-\d{2,}"
                     >
                 </div>
