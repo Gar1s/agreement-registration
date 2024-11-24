@@ -123,6 +123,11 @@ public class AgreementService implements AgreementApi {
     }
 
     @Override
+    public boolean isAgreementByNumerationExists(String numeration) {
+        return agreementRepository.existsByNumeration(numeration);
+    }
+
+    @Override
     public void deleteById(Long id) {
         agreementRepository.deleteById(id);
     }

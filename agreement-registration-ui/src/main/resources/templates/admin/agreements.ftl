@@ -17,7 +17,7 @@
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
-<div class="container col-11">
+<div class="container col-11 pb-5">
     <h1 class="text-center my-4">Всі угоди
         <span class="text-success ps-2">
             <i onclick="visibilityChange()" class="fa-solid fa-magnifying-glass fa-fade fa-sm"

@@ -19,8 +19,12 @@
                     <input type="text" class="form-control" id="numeration" name="numeration" required
                            placeholder="Формат: 06-09/06/10-07/hh-nn"
                            :value="numeration"
-                           pattern="\d{2}-\d{2}/\d{2}/\d{2}-\d{2}/\d{2}-\d{2,}"
+                           @input="isNumerationExists"
+                           pattern="\d{2}-\d{2}\/\d{2}\/\d{2}-\d{2}\/\d{2}-(?!00$)(?!0\d\d)\d{2,}"
                     >
+                    <div v-if="isNumExists" class="text-danger">
+                        <small>Угода з таким номеров вже існує!</small>
+                    </div>
                 </div>
             </div>
 
@@ -140,7 +144,7 @@
                 </div>
             </div>
             <div v-else class="text-center my-3">
-                <button type="submit" class="btn btn-primary">Додати</button>
+                <button :disabled="isNumExists ? '' : disabled" type="submit" class="btn btn-primary">Додати</button>
             </div>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         </form>
