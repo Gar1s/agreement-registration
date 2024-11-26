@@ -111,7 +111,7 @@
         <div class="row align-items-center pt-2">
             <label for="file" class="col-3 p-0">Додати файли:</label>
             <div class="col p-0">
-                <input type="file" class="form-control" id="file" name="documents" accept="application/pdf" multiple>
+                <input type="file" class="form-control" id="file" name="documents" accept=".pdf, .docx" multiple>
             </div>
         </div>
 

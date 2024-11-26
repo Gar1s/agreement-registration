@@ -115,7 +115,7 @@
                 <div class="col row align-items-center">
                     <label for="files" class="col-4 p-0">Пдф угоди:</label>
                     <div class="col p-0">
-                        <input type="file" class="form-control" id="files" name="files" accept="application/pdf" multiple required>
+                        <input type="file" class="form-control" id="files" name="files" accept=".pdf, .docx" multiple required>
                     </div>
                 </div>
             </div>
