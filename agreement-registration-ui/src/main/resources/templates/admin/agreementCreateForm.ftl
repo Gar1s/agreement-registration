@@ -5,6 +5,8 @@
     <title>Реєстр Угоди</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
+    <#import "../component/vue/agreementHelper.ftl" as agreementHelper>
+    <#import "../component/vue/optionState.ftl" as optionState>
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -151,6 +153,8 @@
     </div>
 </div>
 <input type="hidden" id="baseUrl" value="${.globals.baseUrl!}">
+<@agreementHelper.helper></@agreementHelper.helper>
+<@optionState.option></@optionState.option>
 <script type="module" src="/js/agreementCreateForm.js"></script>
 </body>
 </html>

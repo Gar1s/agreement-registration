@@ -5,6 +5,7 @@
     <title>Редагування Угоди</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
+    <#import "../component/vue/optionState.ftl" as optionState>
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -21,7 +22,7 @@
 
         <div class="row align-items-center py-3">
             <label for="basis" class="col-2 p-0">Підстава:</label>
-            <div id="app" class="col p-0 d-grid align-items-center" style="grid-template-columns: 4fr 1fr">
+            <div id="companyEditApp" class="col p-0 d-grid align-items-center" style="grid-template-columns: 4fr 1fr">
                 <div class="">
                     <select v-if="optionState === true" class="form-select" id="basis" name="basis">
                         <option value="${company.basis}">${company.basis}</option>
@@ -85,6 +86,7 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     </form>
 </div>
-<script type="module" src="/js/optionState.js"></script>
+<@optionState.option></@optionState.option>
+<script type="module" src="/js/companyEditForm.js"></script>
 </body>
 </html>

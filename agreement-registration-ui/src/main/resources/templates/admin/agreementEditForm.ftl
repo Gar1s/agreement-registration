@@ -5,6 +5,8 @@
     <title>Редагування Угоди</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
+    <#import "../component/vue/optionState.ftl" as optionState>
+    <#import "../component/vue/agreementHelper.ftl" as agreementHelper>
     <#assign practiceTypeMap = {
     "STUDY": "Навчальна",
     "MANUFACTURE": "Виробнича",
@@ -14,7 +16,7 @@
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
-<div class="container col-8">
+<div id="editApp" class="container col-8">
     <h1 class="text-center my-4 mb-5">Внесіть зміни</h1>
     <form action="/admin/agreements/${agreement.id}/edit" method="post" enctype="multipart/form-data">
 
@@ -23,13 +25,18 @@
             <div class="col p-0">
                 <input type="text" class="form-control" id="numeration" name="numeration" value="${agreement.numeration}"
                        placeholder="Формат: 06-09/06/10-07/hh-nn"
-                       pattern="\d{2}-\d{2}/\d{2}/\d{2}-\d{2}/\d{2}-\d{2,}">
+                       @input="isNumerationExists"
+                       pattern="\d{2}-\d{2}\/\d{2}\/\d{2}-\d{2}\/\d{2}-(?!00$)(?!0\d\d)\d{2,}"
+                >
+                <div v-if="isNumExists" class="text-danger">
+                    <small>Угода з таким номеров вже існує!</small>
+                </div>
             </div>
         </div>
 
         <div class="row align-items-center">
             <label for="basis" class="col-2 p-0">Підстава:</label>
-            <div id="app" class="col p-0 d-grid align-items-center" style="grid-template-columns: 4fr 1fr">
+            <div class="col p-0 d-grid align-items-center" style="grid-template-columns: 4fr 1fr">
                 <div class="">
                     <select v-if="optionState === true" class="form-select" id="basis" name="basis">
                         <option value="${agreement.basis}">${agreement.basis}</option>
@@ -146,11 +153,14 @@
             <a href="/admin/agreements/${agreement.id}" class="navbar-brand m-0">
                 <button type="button" class="btn btn-secondary">Скасувати</button>
             </a>
-            <button type="submit" class="btn btn-primary">Змінити</button>
+            <button :disabled="isNumExists ? '' : disabled" type="submit" class="btn btn-primary">Змінити</button>
         </div>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     </form>
 </div>
-<script type="module" src="/js/optionState.js"></script>
+<input type="hidden" id="baseUrl" value="${.globals.baseUrl!}">
+<@agreementHelper.helper></@agreementHelper.helper>
+<@optionState.option></@optionState.option>
+<script type="module" src="/js/agreementEditForm.js"></script>
 </body>
 </html>

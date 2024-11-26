@@ -5,10 +5,11 @@
     <title>Реєстр Компінії</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
+    <#import "../component/vue/optionState.ftl" as optionState>
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
-<div class="container col-8">
+<div id="companyCreateApp" class="container col-8">
     <h1 class="text-center my-4 mb-5">Заповніть компанію</h1>
     <form action="/admin/companies" method="post">
 
@@ -21,7 +22,7 @@
 
         <div class="row align-items-center py-3">
             <label for="basis" class="col-2 p-0">Підстава:</label>
-            <div id="app" class="col p-0 d-grid align-items-center" style="grid-template-columns: 4fr 1fr">
+            <div class="col p-0 d-grid align-items-center" style="grid-template-columns: 4fr 1fr">
                 <div>
                     <select v-if="optionState === true" class="form-select" id="basis" name="basis">
                         <option value="Статут">Статут</option>
@@ -75,6 +76,7 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     </form>
 </div>
-<script type="module" src="/js/optionState.js"></script>
+<@optionState.option></@optionState.option>
+<script type="module" src="/js/companyCreateForm.js"></script>
 </body>
 </html>
