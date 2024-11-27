@@ -2,6 +2,7 @@
 <script>
 let baseUrl = document.getElementById("baseUrl").value;
 let specialityCode = '06-09/06/10-07';
+let startNumerationValue = document.getElementById("numeration").value;
 
 let agreementHelperApp = {
     data() {
@@ -15,7 +16,7 @@ let agreementHelperApp = {
             this.numeration = e.target.value;
             const pattern = /\d{2}-\d{2}\/\d{2}\/\d{2}-\d{2}\/\d{2}-\d{2,}/gm;
             try {
-                if(pattern.test(this.numeration)){
+                if(pattern.test(this.numeration) && this.numeration !== startNumerationValue){
                     const url = baseUrl + "/api/admin/agreement?numeration=" + this.numeration;
                     const response = (await fetch(url));
                     this.isNumExists = await response.json();
