@@ -56,8 +56,8 @@ public class AgreementSearchRepositoryImpl implements AgreementSearchRepository{
         );
 
         Expression<String> numeration = root.get("numeration");
-        Expression<String> lastTwoDigits = criteriaBuilder.substring(numeration, 19);
-        Expression<String> twoDigitsBeforeLastTwoDigits = criteriaBuilder.substring(numeration, 16, 2);
+        Expression<Long> lastTwoDigits = criteriaBuilder.substring(numeration, 19).as(Long.class);
+        Expression<Long> twoDigitsBeforeLastTwoDigits = criteriaBuilder.substring(numeration, 16, 2).as(Long.class);
 
         criteriaQuery.orderBy(
                 criteriaBuilder.desc(twoDigitsBeforeLastTwoDigits),
