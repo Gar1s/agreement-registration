@@ -20,4 +20,6 @@ public interface AgreementApi {
 
     void editById(Long id, AgreementEditDto dto);
 
+    boolean isAgreementByNumerationExists(String numeration);
+
 }

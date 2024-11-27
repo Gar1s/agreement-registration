@@ -1,6 +1,6 @@
-
-const {createApp} = Vue;
-createApp({
+<#macro option>
+<script>
+let optionStateApp = {
     data() {
         return {
             optionState: true
@@ -11,4 +11,6 @@ createApp({
             this.optionState = !this.optionState;
         }
     }
-}).mount('#app')
+}
+</script>
+</#macro>

@@ -5,6 +5,8 @@
     <title>Реєстр Угоди</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
+    <#import "../component/vue/agreementHelper.ftl" as agreementHelper>
+    <#import "../component/vue/optionState.ftl" as optionState>
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -18,9 +20,13 @@
                 <div class="col p-0">
                     <input type="text" class="form-control" id="numeration" name="numeration" required
                            placeholder="Формат: 06-09/06/10-07/hh-nn"
-                           value="06-09/06/10-07/"
-                           pattern="\d{2}-\d{2}/\d{2}/\d{2}-\d{2}/\d{2}-\d{1,}"
+                           :value="numeration"
+                           @input="isNumerationExists"
+                           pattern="\d{2}-\d{2}\/\d{2}\/\d{2}-\d{2}\/\d{2}-(?!00$)(?!0\d\d)\d{2,}"
                     >
+                    <div v-if="isNumExists" class="text-danger">
+                        <small>Угода з таким номеров вже існує!</small>
+                    </div>
                 </div>
             </div>
 
@@ -109,7 +115,7 @@
                 <div class="col row align-items-center">
                     <label for="files" class="col-4 p-0">Пдф угоди:</label>
                     <div class="col p-0">
-                        <input type="file" class="form-control" id="files" name="files" accept="application/pdf" multiple required>
+                        <input type="file" class="form-control" id="files" name="files" accept=".pdf, .docx" multiple required>
                     </div>
                 </div>
             </div>
@@ -140,13 +146,15 @@
                 </div>
             </div>
             <div v-else class="text-center my-3">
-                <button type="submit" class="btn btn-primary">Додати</button>
+                <button :disabled="isNumExists ? '' : disabled" type="submit" class="btn btn-primary">Додати</button>
             </div>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         </form>
     </div>
 </div>
 <input type="hidden" id="baseUrl" value="${.globals.baseUrl!}">
+<@agreementHelper.helper></@agreementHelper.helper>
+<@optionState.option></@optionState.option>
 <script type="module" src="/js/agreementCreateForm.js"></script>
 </body>
 </html>

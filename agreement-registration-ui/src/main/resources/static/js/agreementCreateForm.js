@@ -5,10 +5,13 @@ createApp({
     data() {
         return {
             companies: [],
-            optionState: true
+            ...agreementHelperApp.data(),
+            ...optionStateApp.data()
         }
     },
     methods: {
+        ...agreementHelperApp.methods,
+        ...optionStateApp.methods,
         async fetch() {
             try {
                 const url = baseUrl + "/api/admin/companies";
@@ -17,9 +20,6 @@ createApp({
             } catch (error) {
                 console.error('Error fetching:', error);
             }
-        },
-        changeState(){
-            this.optionState = !this.optionState;
         }
     },
     created() {
