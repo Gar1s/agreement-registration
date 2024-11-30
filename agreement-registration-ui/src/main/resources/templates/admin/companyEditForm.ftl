@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Редагування Угоди</title>
+    <title>${springMacroRequestContext.getMessage("title.company.edit")}</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
     <#import "../component/vue/optionState.ftl" as optionState>

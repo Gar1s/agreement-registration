@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Реєстр Компінії</title>
+    <title>${springMacroRequestContext.getMessage("title.companies.create")}</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
     <#import "../component/vue/optionState.ftl" as optionState>
