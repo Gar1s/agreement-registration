@@ -43,11 +43,17 @@ public class AgreementSearchRepositoryImpl implements AgreementSearchRepository{
             predicates.add(typePred);
         }
         if(!criteria.getCompanyName().isEmpty()){
-            Predicate namePred = criteriaBuilder.like(root.get("company").get("name"), "%" + criteria.getCompanyName() + "%");
+            Predicate namePred = criteriaBuilder.like(
+                    criteriaBuilder.lower(root.get("company").get("name")),
+                    "%" + criteria.getCompanyName().toLowerCase() + "%"
+            );
             predicates.add(namePred);
         }
         if(!criteria.getStudentInitials().isEmpty()){
-            Predicate initPred = criteriaBuilder.like(root.get("studentInitials"), "%" + criteria.getStudentInitials() + "%");
+            Predicate initPred = criteriaBuilder.like(
+                    criteriaBuilder.lower(root.get("studentInitials")),
+                    "%" + criteria.getStudentInitials().toLowerCase() + "%"
+            );
             predicates.add(initPred);
         }
 
