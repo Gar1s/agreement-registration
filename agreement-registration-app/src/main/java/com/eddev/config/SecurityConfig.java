@@ -33,6 +33,9 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
+                        .loginPage("/auth/login")
+                        .permitAll()
+                        .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/admin/agreements", true)
                 )
                 .build();

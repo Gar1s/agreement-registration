@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Agreements List</title>
+    <title>${springMacroRequestContext.getMessage("title.company")}</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
     <#import "../component/model.ftl" as modal>

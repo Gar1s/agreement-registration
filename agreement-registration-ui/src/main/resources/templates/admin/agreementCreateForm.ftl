@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Реєстр Угоди</title>
+    <title>${springMacroRequestContext.getMessage("title.agreements.create")}</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
     <#import "../component/vue/agreementHelper.ftl" as agreementHelper>

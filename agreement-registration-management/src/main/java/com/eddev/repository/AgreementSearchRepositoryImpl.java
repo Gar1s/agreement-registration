@@ -43,11 +43,17 @@ public class AgreementSearchRepositoryImpl implements AgreementSearchRepository{
             predicates.add(typePred);
         }
         if(!criteria.getCompanyName().isEmpty()){
-            Predicate namePred = criteriaBuilder.equal(root.get("company").get("name"), criteria.getCompanyName());
+            Predicate namePred = criteriaBuilder.like(
+                    criteriaBuilder.lower(root.get("company").get("name")),
+                    "%" + criteria.getCompanyName().toLowerCase() + "%"
+            );
             predicates.add(namePred);
         }
         if(!criteria.getStudentInitials().isEmpty()){
-            Predicate initPred = criteriaBuilder.equal(root.get("studentInitials"), criteria.getStudentInitials());
+            Predicate initPred = criteriaBuilder.like(
+                    criteriaBuilder.lower(root.get("studentInitials")),
+                    "%" + criteria.getStudentInitials().toLowerCase() + "%"
+            );
             predicates.add(initPred);
         }
 
@@ -56,8 +62,8 @@ public class AgreementSearchRepositoryImpl implements AgreementSearchRepository{
         );
 
         Expression<String> numeration = root.get("numeration");
-        Expression<String> lastTwoDigits = criteriaBuilder.substring(numeration, 19);
-        Expression<String> twoDigitsBeforeLastTwoDigits = criteriaBuilder.substring(numeration, 16, 2);
+        Expression<Long> lastTwoDigits = criteriaBuilder.substring(numeration, 19).as(Long.class);
+        Expression<Long> twoDigitsBeforeLastTwoDigits = criteriaBuilder.substring(numeration, 16, 2).as(Long.class);
 
         criteriaQuery.orderBy(
                 criteriaBuilder.desc(twoDigitsBeforeLastTwoDigits),

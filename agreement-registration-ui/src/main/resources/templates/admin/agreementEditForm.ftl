@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Редагування Угоди</title>
+    <title>${springMacroRequestContext.getMessage("title.agreement.edit")}</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
     <#import "../component/vue/optionState.ftl" as optionState>
@@ -153,7 +153,7 @@
             <a href="/admin/agreements/${agreement.id}" class="navbar-brand m-0">
                 <button type="button" class="btn btn-secondary">Скасувати</button>
             </a>
-            <button :disabled="isNumExists ? '' : disabled" type="submit" class="btn btn-primary">Змінити</button>
+            <button :disabled="isNumExists ? '' : disabled" type="submit" class="ms-4 btn btn-primary">Змінити</button>
         </div>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     </form>
