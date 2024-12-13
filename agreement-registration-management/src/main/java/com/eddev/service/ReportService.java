@@ -51,7 +51,7 @@ public class ReportService {
             dataRow.createCell(0).setCellValue(dataRowIndex);
             dataRow.createCell(1).setCellValue(agreement.getNumeration());
             dataRow.createCell(2).setCellValue(agreement.getCompanyName());
-            dataRow.createCell(3).setCellValue(agreement.getPracticeType().label);
+            dataRow.createCell(3).setCellValue(agreement.getPracticeType());
             dataRow.createCell(4).setCellValue(agreement.getCompanyAgreementDate().format(DATE_TIME_FORMATTER));
             dataRow.createCell(5).setCellValue(
                     agreement.getStartDate().format(DATE_TIME_FORMATTER) + " - " +

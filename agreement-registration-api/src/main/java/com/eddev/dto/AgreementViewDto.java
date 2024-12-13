@@ -1,8 +1,5 @@
 package com.eddev.dto;
 
-import com.eddev.constant.PracticeType;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,8 +15,7 @@ public class AgreementViewDto {
 
     private Long id;
     private String basis;
-    @Enumerated(value = EnumType.STRING)
-    private PracticeType practiceType;
+    private String practiceType;
     private LocalDate agreementDate;
     private LocalDate companyAgreementDate;
     private LocalDate startDate;

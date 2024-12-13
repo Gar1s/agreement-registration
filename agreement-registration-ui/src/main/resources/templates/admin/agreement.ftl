@@ -9,12 +9,6 @@
     <#import "../component/navbar.ftl" as navbar>
     <#import "../component/model.ftl" as modal>
     <#import "../component/modelNonForm.ftl" as modelNonForm>
-    <#assign practiceTypeMap = {
-    "STUDY": "Навчальна",
-    "MANUFACTURE": "Виробнича",
-    "TECHNOLOGICAL": "Навчально-технологічна",
-    "PRE_DIPLOMA":"Переддипломна"
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -33,7 +27,7 @@
             </div>
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Вид практики:</p>
-                ${practiceTypeMap[agreement.practiceType?string]}
+                ${agreement.practiceType}
             </div>
         </div>
         <div class="col-5 border border-secondary border-1 rounded-2 p-3">

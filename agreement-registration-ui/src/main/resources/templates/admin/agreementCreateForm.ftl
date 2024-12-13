@@ -65,10 +65,10 @@
                 <label for="practiceType" class="col-2 p-0">Вид практики:</label>
                 <div class="col p-0">
                     <select class="form-select" id="practiceType" name="practiceType">
-                        <option value="STUDY">Навчальна</option>
-                        <option value="MANUFACTURE">Виробнича</option>
-                        <option value="TECHNOLOGICAL">Навчально-технологічна</option>
-                        <option value="PRE_DIPLOMA">Переддипломна</option>
+                        <option value="Навчальна">Навчальна</option>
+                        <option value="Виробнича">Виробнича</option>
+                        <option value="Виробнича">Навчально-технологічна</option>
+                        <option value="Переддипломна">Переддипломна</option>
                     </select>
                 </div>
             </div>

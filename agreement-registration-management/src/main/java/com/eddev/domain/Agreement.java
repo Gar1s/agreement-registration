@@ -1,11 +1,8 @@
 package com.eddev.domain;
 
-import com.eddev.constant.PracticeType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,8 +30,7 @@ public class Agreement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String basis;
-    @Enumerated(value = EnumType.STRING)
-    private PracticeType practiceType;
+    private String practiceType;
     private LocalDate agreementDate;
     private LocalDate companyAgreementDate;
     private LocalDate startDate;

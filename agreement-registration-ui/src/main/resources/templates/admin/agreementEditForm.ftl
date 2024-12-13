@@ -7,12 +7,6 @@
     <#import "../component/navbar.ftl" as navbar>
     <#import "../component/vue/optionState.ftl" as optionState>
     <#import "../component/vue/agreementHelper.ftl" as agreementHelper>
-    <#assign practiceTypeMap = {
-    "STUDY": "Навчальна",
-    "MANUFACTURE": "Виробнича",
-    "TECHNOLOGICAL": "Навчально-технологічна",
-    "PRE_DIPLOMA":"Переддипломна"
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -61,18 +55,18 @@
             <label for="practiceType" class="col-2 p-0">Вид практики:</label>
             <div class="col p-0">
                 <select class="form-select" id="practiceType" name="practiceType">
-                    <option value="${agreement.practiceType}">${practiceTypeMap[agreement.practiceType?string]}</option>
-                    <#if agreement.practiceType != "STUDY">
-                        <option value="STUDY">Навчальна</option>
+                    <option value="${agreement.practiceType}">${agreement.practiceType}</option>
+                    <#if agreement.practiceType != "Навчальна">
+                        <option value="Навчальна">Навчальна</option>
                     </#if>
-                    <#if agreement.practiceType != "MANUFACTURE">
-                        <option value="MANUFACTURE">Виробнича</option>
+                    <#if agreement.practiceType != "Виробнича">
+                        <option value="Виробнича">Виробнича</option>
                     </#if>
-                    <#if agreement.practiceType != "TECHNOLOGICAL">
-                        <option value="TECHNOLOGICAL">Навчально-технологічна</option>
+                    <#if agreement.practiceType != "Навчально-технологічна">
+                        <option value="Навчально-технологічна">Навчально-технологічна</option>
                     </#if>
-                    <#if agreement.practiceType != "PRE_DIPLOMA">
-                        <option value="PRE_DIPLOMA">Переддипломна</option>
+                    <#if agreement.practiceType != "Переддипломна">
+                        <option value="Переддипломна">Переддипломна</option>
                     </#if>
                 </select>
             </div>
