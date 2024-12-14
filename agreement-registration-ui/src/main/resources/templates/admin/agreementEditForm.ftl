@@ -54,21 +54,13 @@
         <div class="row align-items-center py-3">
             <label for="practiceType" class="col-2 p-0">Вид практики:</label>
             <div class="col p-0">
-                <select class="form-select" id="practiceType" name="practiceType">
-                    <option value="${agreement.practiceType}">${agreement.practiceType}</option>
-                    <#if agreement.practiceType != "Навчальна">
-                        <option value="Навчальна">Навчальна</option>
-                    </#if>
-                    <#if agreement.practiceType != "Виробнича">
-                        <option value="Виробнича">Виробнича</option>
-                    </#if>
-                    <#if agreement.practiceType != "Навчально-технологічна">
-                        <option value="Навчально-технологічна">Навчально-технологічна</option>
-                    </#if>
-                    <#if agreement.practiceType != "Переддипломна">
-                        <option value="Переддипломна">Переддипломна</option>
-                    </#if>
-                </select>
+                <input list="practiceTypes" class="form-select" id="practiceType" name="practiceType" value="${agreement.practiceType}">
+                <datalist id="practiceTypes">
+                    <option value="Навчальна">
+                    <option value="Виробнича">
+                    <option value="Навчально-технологічна">
+                    <option value="Переддипломна">
+                </datalist>
             </div>
         </div>
 
