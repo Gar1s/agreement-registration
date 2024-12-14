@@ -129,9 +129,14 @@
         <div class="row align-items-center py-3">
             <label for="speciality" class="col-2 p-0">Спеціальність:</label>
             <div class="col p-0">
-                <select class="form-select" id="speciality" name="speciality">
-                    <option value="121">121 - Інженерія Програмного Забезпечення</option>
-                </select>
+                <input list="specialities" class="form-select" id="speciality" name="speciality"
+                       value="${agreement.speciality}"
+                       pattern="^\d{1,4} - .{2,}"
+                       placeholder="код - назва"
+                >
+                <datalist id="specialities">
+                    <option value="121 - Інженерія Програмного Забезпечення">
+                </datalist>
             </div>
         </div>
 

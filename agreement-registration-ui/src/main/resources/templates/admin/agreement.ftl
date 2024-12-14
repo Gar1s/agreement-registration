@@ -77,7 +77,7 @@
             </div>
             <div class="px-2 d-flex justify-content-between">
                 <p class="m-0 fw-medium">Спеціальність:</p>
-                ${agreement.speciality} - Інженерія Програмного Забезпечення
+                <div class="text-end">${agreement.speciality}</div>
             </div>
         </div>
     </div>
