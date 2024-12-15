@@ -124,11 +124,13 @@
             <div class="row align-items-center py-3">
                 <label for="year" class="col-2 p-0">Курс:</label>
                 <div class="col p-0">
-                    <select class="form-select" id="year" name="year">
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+                    <input type="number" list="years" class="form-control" id="year" name="year"
+                           placeholder="Введіть..." required>
+                    <datalist id="years">
+                        <option value="3">
+                        <option value="4">
+                        <option value="5">
+                    </datalist>
                 </div>
             </div>
 
