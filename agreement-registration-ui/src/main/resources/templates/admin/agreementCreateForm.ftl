@@ -64,12 +64,13 @@
             <div class="row align-items-center">
                 <label for="practiceType" class="col-2 p-0">Вид практики:</label>
                 <div class="col p-0">
-                    <select class="form-select" id="practiceType" name="practiceType">
-                        <option value="STUDY">Навчальна</option>
-                        <option value="MANUFACTURE">Виробнича</option>
-                        <option value="TECHNOLOGICAL">Навчально-технологічна</option>
-                        <option value="PRE_DIPLOMA">Переддипломна</option>
-                    </select>
+                    <input list="practiceTypes" class="form-select" id="practiceType" name="practiceType">
+                    <datalist id="practiceTypes">
+                        <option value="Навчальна">
+                        <option value="Виробнича">
+                        <option value="Навчально-технологічна">
+                        <option value="Переддипломна">
+                    </datalist>
                 </div>
             </div>
 
@@ -134,9 +135,14 @@
             <div class="row align-items-center">
                 <label for="speciality" class="col-2 p-0">Спеціальність:</label>
                 <div class="col p-0">
-                    <select class="form-select" id="speciality" name="speciality">
-                        <option value="121">121 - Інженерія Програмного Забезпечення</option>
-                    </select>
+                    <input list="specialities" class="form-select" id="speciality" name="speciality"
+                           value="121 - Інженерія Програмного Забезпечення(ІПЗ)"
+                           pattern="^\d{1,4} - .{2,}"
+                           placeholder="код - назва"
+                    >
+                    <datalist id="specialities">
+                        <option value="121 - Інженерія Програмного Забезпечення">
+                    </datalist>
                 </div>
             </div>
 

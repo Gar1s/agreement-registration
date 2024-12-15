@@ -7,12 +7,6 @@
     <#import "../component/navbar.ftl" as navbar>
     <#import "../component/vue/optionState.ftl" as optionState>
     <#import "../component/vue/agreementHelper.ftl" as agreementHelper>
-    <#assign practiceTypeMap = {
-    "STUDY": "Навчальна",
-    "MANUFACTURE": "Виробнича",
-    "TECHNOLOGICAL": "Навчально-технологічна",
-    "PRE_DIPLOMA":"Переддипломна"
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -60,21 +54,13 @@
         <div class="row align-items-center py-3">
             <label for="practiceType" class="col-2 p-0">Вид практики:</label>
             <div class="col p-0">
-                <select class="form-select" id="practiceType" name="practiceType">
-                    <option value="${agreement.practiceType}">${practiceTypeMap[agreement.practiceType?string]}</option>
-                    <#if agreement.practiceType != "STUDY">
-                        <option value="STUDY">Навчальна</option>
-                    </#if>
-                    <#if agreement.practiceType != "MANUFACTURE">
-                        <option value="MANUFACTURE">Виробнича</option>
-                    </#if>
-                    <#if agreement.practiceType != "TECHNOLOGICAL">
-                        <option value="TECHNOLOGICAL">Навчально-технологічна</option>
-                    </#if>
-                    <#if agreement.practiceType != "PRE_DIPLOMA">
-                        <option value="PRE_DIPLOMA">Переддипломна</option>
-                    </#if>
-                </select>
+                <input list="practiceTypes" class="form-select" id="practiceType" name="practiceType" value="${agreement.practiceType}">
+                <datalist id="practiceTypes">
+                    <option value="Навчальна">
+                    <option value="Виробнича">
+                    <option value="Навчально-технологічна">
+                    <option value="Переддипломна">
+                </datalist>
             </div>
         </div>
 
@@ -143,9 +129,14 @@
         <div class="row align-items-center py-3">
             <label for="speciality" class="col-2 p-0">Спеціальність:</label>
             <div class="col p-0">
-                <select class="form-select" id="speciality" name="speciality">
-                    <option value="121">121 - Інженерія Програмного Забезпечення</option>
-                </select>
+                <input list="specialities" class="form-select" id="speciality" name="speciality"
+                       value="${agreement.speciality}"
+                       pattern="^\d{1,4} - .{2,}"
+                       placeholder="код - назва"
+                >
+                <datalist id="specialities">
+                    <option value="121 - Інженерія Програмного Забезпечення">
+                </datalist>
             </div>
         </div>
 

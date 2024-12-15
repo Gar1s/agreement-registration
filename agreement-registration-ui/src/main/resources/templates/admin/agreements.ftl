@@ -7,13 +7,6 @@
     <title>${springMacroRequestContext.getMessage("title.agreements")}</title>
     <#include "../include/dependencies.ftl">
     <#import "../component/navbar.ftl" as navbar>
-    <#assign practiceTypeMap = {
-    "STUDY": "Навчальна",
-    "MANUFACTURE": "Виробнича",
-    "TECHNOLOGICAL": "Навчально-технологічна",
-    "PRE_DIPLOMA":"Переддипломна",
-    "":"..."
-    } />
 </head>
 <body>
 <@navbar.navbar></@navbar.navbar>
@@ -55,18 +48,18 @@
                         <label for="practiceType" class="p-0">Вид практики:</label>
                         <div class="p-0">
                             <select class="form-select" id="practiceType" name="type">
-                                <option value="${params['searchPracticeType']}">${practiceTypeMap[params['searchPracticeType']?string]}</option>
-                                <#if params['searchPracticeType'] != "STUDY">
-                                    <option value="STUDY">Навчальна</option>
+                                <option value="${params['searchPracticeType']}">${params['searchPracticeType']}</option>
+                                <#if params['searchPracticeType'] != "Навчальна">
+                                    <option value="Навчальна">Навчальна</option>
                                 </#if>
-                                <#if params['searchPracticeType'] != "MANUFACTURE">
-                                    <option value="MANUFACTURE">Виробнича</option>
+                                <#if params['searchPracticeType'] != "Виробнича">
+                                    <option value="Виробнича">Виробнича</option>
                                 </#if>
-                                <#if params['searchPracticeType'] != "TECHNOLOGICAL">
-                                    <option value="TECHNOLOGICAL">Навчально-технологічна</option>
+                                <#if params['searchPracticeType'] != "Навчально-технологічна">
+                                    <option value="Навчально-технологічна">Навчально-технологічна</option>
                                 </#if>
-                                <#if params['searchPracticeType'] != "PRE_DIPLOMA">
-                                    <option value="PRE_DIPLOMA">Переддипломна</option>
+                                <#if params['searchPracticeType'] != "Переддипломна">
+                                    <option value="Переддипломна">Переддипломна</option>
                                 </#if>
                                 <#if params['searchPracticeType'] != "">
                                     <option value="">...</option>
@@ -99,7 +92,7 @@
             <tr class="align-middle">
                 <th scope="row">${agreement.numeration}</th>
                 <td><a href="/admin/companies/${agreement.companyId}">${agreement.companyName}</a></td>
-                <td>${practiceTypeMap[agreement.practiceType?string]}</td>
+                <td>${agreement.practiceType}</td>
                 <td>${agreement.companyAgreementDate.format(.globals.dateFormatter)}</td>
                 <td>
                     ${agreement.startDate.format(.globals.dateFormatter)}<br>
