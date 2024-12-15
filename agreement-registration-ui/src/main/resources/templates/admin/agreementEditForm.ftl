@@ -54,7 +54,10 @@
         <div class="row align-items-center py-3">
             <label for="practiceType" class="col-2 p-0">Вид практики:</label>
             <div class="col p-0">
-                <input list="practiceTypes" class="form-select" id="practiceType" name="practiceType" value="${agreement.practiceType}">
+                <input list="practiceTypes" class="form-select" id="practiceType" name="practiceType"
+                       value="${agreement.practiceType}"
+                       placeholder="Виберіть зі списку"
+                >
                 <datalist id="practiceTypes">
                     <option value="Навчальна">
                     <option value="Виробнича">
@@ -112,7 +115,7 @@
             <label for="year" class="col-2 p-0">Курс:</label>
             <div class="col p-0">
                 <input type="number" list="years" class="form-control" id="year" name="year"
-                       placeholder="Введіть..." value="${agreement.year}" required>
+                       placeholder="Введіть курс..." value="${agreement.year}" required>
                 <datalist id="years">
                     <option value="3">
                     <option value="4">

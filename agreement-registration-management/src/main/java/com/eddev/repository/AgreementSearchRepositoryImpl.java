@@ -17,7 +17,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class AgreementSearchRepositoryImpl implements AgreementSearchRepository{
+public class AgreementSearchRepositoryImpl implements AgreementSearchRepository {
 
     private final EntityManager entityManager;
 
@@ -29,7 +29,7 @@ public class AgreementSearchRepositoryImpl implements AgreementSearchRepository{
         // select from Agreements
         Root<Agreement> root = criteriaQuery.from(Agreement.class);
 
-        if(!criteria.getDate().isEmpty()) {
+        if (!criteria.getDate().isEmpty()) {
             int year = Integer.parseInt(criteria.getDate());
             Predicate datePredicate = criteriaBuilder.equal(
                     criteriaBuilder.function("date_part",
@@ -38,18 +38,21 @@ public class AgreementSearchRepositoryImpl implements AgreementSearchRepository{
             );
             predicates.add(datePredicate);
         }
-        if(!criteria.getPracticeType().isEmpty()){
-            Predicate typePred = criteriaBuilder.equal(root.get("practiceType"), criteria.getPracticeType());
+        if (!criteria.getPracticeType().isEmpty()) {
+            Predicate typePred = criteriaBuilder.like(
+                    criteriaBuilder.lower(root.get("practiceType")),
+                    "%" + criteria.getPracticeType().toLowerCase() + "%"
+            );
             predicates.add(typePred);
         }
-        if(!criteria.getCompanyName().isEmpty()){
+        if (!criteria.getCompanyName().isEmpty()) {
             Predicate namePred = criteriaBuilder.like(
                     criteriaBuilder.lower(root.get("company").get("name")),
                     "%" + criteria.getCompanyName().toLowerCase() + "%"
             );
             predicates.add(namePred);
         }
-        if(!criteria.getStudentInitials().isEmpty()){
+        if (!criteria.getStudentInitials().isEmpty()) {
             Predicate initPred = criteriaBuilder.like(
                     criteriaBuilder.lower(root.get("studentInitials")),
                     "%" + criteria.getStudentInitials().toLowerCase() + "%"

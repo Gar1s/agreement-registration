@@ -47,24 +47,16 @@
                     <div class="py-3">
                         <label for="practiceType" class="p-0">Вид практики:</label>
                         <div class="p-0">
-                            <select class="form-select" id="practiceType" name="type">
-                                <option value="${params['searchPracticeType']}">${params['searchPracticeType']}</option>
-                                <#if params['searchPracticeType'] != "Навчальна">
-                                    <option value="Навчальна">Навчальна</option>
-                                </#if>
-                                <#if params['searchPracticeType'] != "Виробнича">
-                                    <option value="Виробнича">Виробнича</option>
-                                </#if>
-                                <#if params['searchPracticeType'] != "Навчально-технологічна">
-                                    <option value="Навчально-технологічна">Навчально-технологічна</option>
-                                </#if>
-                                <#if params['searchPracticeType'] != "Переддипломна">
-                                    <option value="Переддипломна">Переддипломна</option>
-                                </#if>
-                                <#if params['searchPracticeType'] != "">
-                                    <option value="">...</option>
-                                </#if>
-                            </select>
+                            <input list="practiceTypes" class="form-select" id="practiceType" name="type"
+                                   placeholder="Виберіть зі списку"
+                                   value="${params['searchPracticeType']}"
+                            >
+                            <datalist id="practiceTypes">
+                                <option value="Навчальна">
+                                <option value="Виробнича">
+                                <option value="Навчально-технологічна">
+                                <option value="Переддипломна">
+                            </datalist>
                         </div>
                     </div>
                 </div>
