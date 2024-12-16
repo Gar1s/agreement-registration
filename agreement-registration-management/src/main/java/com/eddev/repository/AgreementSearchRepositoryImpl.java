@@ -29,6 +29,20 @@ public class AgreementSearchRepositoryImpl implements AgreementSearchRepository 
         // select from Agreements
         Root<Agreement> root = criteriaQuery.from(Agreement.class);
 
+        if (!criteria.getSpeciality().isEmpty()) {
+            Predicate namePred = criteriaBuilder.or(
+                    criteriaBuilder.like(
+                            criteriaBuilder.lower(root.get("speciality")),
+                            "%" + criteria.getSpeciality().toLowerCase() + "%"
+                    ),
+                    criteriaBuilder.like(
+                            criteriaBuilder.lower(root.get("numeration")),
+                            "%" + criteria.getSpeciality().toLowerCase() + "%"
+                    )
+            );
+            predicates.add(namePred);
+        }
+
         if (!criteria.getDate().isEmpty()) {
             int year = Integer.parseInt(criteria.getDate());
             Predicate datePredicate = criteriaBuilder.equal(
@@ -67,8 +81,10 @@ public class AgreementSearchRepositoryImpl implements AgreementSearchRepository 
         Expression<String> numeration = root.get("numeration");
         Expression<Long> lastTwoDigits = criteriaBuilder.substring(numeration, 19).as(Long.class);
         Expression<Long> twoDigitsBeforeLastTwoDigits = criteriaBuilder.substring(numeration, 16, 2).as(Long.class);
+        Expression<String> majorPart = criteriaBuilder.substring(numeration, 1, 16);
 
         criteriaQuery.orderBy(
+                criteriaBuilder.asc(majorPart),
                 criteriaBuilder.desc(twoDigitsBeforeLastTwoDigits),
                 criteriaBuilder.asc(lastTwoDigits)
         );

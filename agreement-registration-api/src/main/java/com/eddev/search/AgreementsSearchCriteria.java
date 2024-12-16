@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AgreementsSearchCriteria {
 
+    private String speciality;
     private String date;
     @Enumerated(value = EnumType.STRING)
     private String practiceType;

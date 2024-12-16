@@ -19,8 +19,8 @@
     </h1>
     <div id="toggleDiv">
         <form action="/admin/agreements" method="get">
-            <div class="row align-items-center">
-                <div class="col">
+            <div class="d-grid align-items-center" style="grid-template-columns: 1fr 1fr 1fr">
+                <div class="m-2">
                     <div class="">
                         <label for="date" class="p-0">Рік(xxxx):</label>
                         <div class="p-0">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="m-2">
                     <div class="">
                         <label for="studentInitials" class="p-0">Ініціали студента:</label>
                         <div class="p-0">
@@ -60,9 +60,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2 text-center d-grid">
-                    <button class="btn btn-outline-primary my-2" type="submit">Пошук</button>
-                    <button onclick="generateExcel()" class="btn btn-outline-success my-2" type="button">.xls</button>
+                <div class="m-2">
+                    <div class="pb-3">
+                        <label for="speciality" class="">Спеціальність:</label>
+                        <div class="p-0">
+                            <input list="speciality" class="form-select" id="speciality" name="speciality"
+                                   placeholder="121, 06-09, Інженерія..."
+                                   value="${params['searchSpeciality']}"
+                            >
+                            <datalist id="speciality">
+                                <option value="121 - Інженерія Програмного Забезпечення">
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="py-4 pb-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <button class="btn btn-outline-primary w-100" type="submit">Пошук</button>
+                            </div>
+                            <div class="col">
+                                <button onclick="generateExcel()" class="btn btn-outline-success w-100" type="button">.xls</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
