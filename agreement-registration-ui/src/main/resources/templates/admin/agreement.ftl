@@ -57,7 +57,9 @@
                 <div class="" id="app" style="font-size: 14px">
                     <#list agreement.files as file>
                         <div class="py-2 d-flex justify-content-between align-items-center">
-                            <a href="/admin/files/${file.id}" target="_blank">${file.name}</a>
+                            <a style="overflow: hidden;text-overflow: ellipsis;max-width: 90%;"
+                               title="${file.name}"
+                               href="/admin/files/${file.id}" target="_blank">${file.name}</a>
                             <span @click="enableModel('${file.id}','${file.name}')"
                                   class="text-danger" style="cursor: pointer">X</span>
                         </div>
