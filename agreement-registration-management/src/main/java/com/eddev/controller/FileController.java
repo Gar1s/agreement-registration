@@ -24,7 +24,7 @@ public class FileController {
     private final FileApi fileApi;
 
     @GetMapping("/{id}")
-    public ResponseEntity<byte[]> getById(@PathVariable Long id) {
+    public ResponseEntity<byte[]> getById(@PathVariable String id) {
         FileDto fileDto = fileApi.viewById(id);
         String filename = UriUtils.encode(fileDto.getName(), StandardCharsets.UTF_8);
 
@@ -36,7 +36,7 @@ public class FileController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable Long id){
+    public ResponseEntity<String> deleteById(@PathVariable String id){
         fileApi.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

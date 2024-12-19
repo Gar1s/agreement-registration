@@ -1,6 +1,7 @@
 package com.eddev.service;
 
 import com.eddev.api.AgreementApi;
+import com.eddev.api.FileApi;
 import com.eddev.domain.Agreement;
 import com.eddev.domain.Company;
 import com.eddev.domain.File;
@@ -19,10 +20,12 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -33,6 +36,7 @@ public class AgreementService implements AgreementApi {
     private final CompanyRepository companyRepository;
     private final AgreementMapper agreementMapper;
     private final FileMapper fileMapper;
+    private final FileApi fileApi;
 
     @Override
     public void save(AgreementCreateDto dto) {
@@ -56,15 +60,7 @@ public class AgreementService implements AgreementApi {
         agreement.setCompany(company);
 
         List<File> files = dto.getFiles().stream()
-                .map(file -> {
-                    try {
-                        File fileNew = fileMapper.toFile(file);
-                        fileNew.setAgreement(agreement);
-                        return fileNew;
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
+                .map(file -> storeFile(file, agreement))
                 .toList();
 
         agreement.setFiles(files);
@@ -105,15 +101,7 @@ public class AgreementService implements AgreementApi {
 
         if (!dto.getDocuments().get(0).isEmpty()) {
             List<File> files = new ArrayList<>(dto.getDocuments().stream()
-                    .map(dtoFile -> {
-                        try {
-                            File file = fileMapper.toFile(dtoFile);
-                            file.setAgreement(agreement);
-                            return file;
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    })
+                    .map(file -> storeFile(file, agreement))
                     .toList());
             files.addAll(agreement.getFiles());
             agreement.setFiles(files);
@@ -127,9 +115,28 @@ public class AgreementService implements AgreementApi {
         return agreementRepository.existsByNumeration(numeration);
     }
 
+    @Transactional
     @Override
     public void deleteById(Long id) {
+        Agreement agreement = findById(id);
+        agreement.getFiles()
+                .forEach(file -> fileApi.deleteById(file.getId()));
         agreementRepository.deleteById(id);
+    }
+
+    private File storeFile(MultipartFile multipartFile, Agreement agreement) {
+        try {
+            File file = fileMapper.toFile(multipartFile);
+            String fileId = UUID.randomUUID().toString().concat(".").concat(multipartFile.getOriginalFilename());
+
+            fileApi.storeFile(multipartFile, fileId);
+
+            file.setId(fileId);
+            file.setAgreement(agreement);
+            return file;
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to process file: " + multipartFile.getOriginalFilename(), e);
+        }
     }
 
     private Agreement findById(Long id) {
