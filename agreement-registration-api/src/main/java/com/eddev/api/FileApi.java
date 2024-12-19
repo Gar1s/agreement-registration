@@ -1,12 +1,15 @@
 package com.eddev.api;
 
 import com.eddev.dto.FileDto;
+import org.springframework.web.multipart.MultipartFile;
 
 
 public interface FileApi {
 
-    FileDto viewById(Long id);
+    FileDto viewById(String id);
 
-    void deleteById(Long id);
+    void deleteById(String id);
+
+    void storeFile(MultipartFile file, String fileId);
 
 }

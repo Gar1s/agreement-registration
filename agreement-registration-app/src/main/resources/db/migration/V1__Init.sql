@@ -1,12 +1,9 @@
 CREATE TABLE agreements
 (
     id                     BIGSERIAL PRIMARY KEY,
+    numeration             VARCHAR(200) NOT NULL,
     basis                  VARCHAR(120) NOT NULL,
-    practice_type          VARCHAR(100)
-        CHECK
-            (
-            practice_type IN ('STUDY', 'MANUFACTURE', 'TECHNOLOGICAL', 'PRE_DIPLOMA')
-            )                           NOT NULL,
+    practice_type          VARCHAR(200) NOT NULL,
     agreement_date         DATE         NOT NULL,
     company_agreement_date DATE         NOT NULL,
     start_date             DATE         NOT NULL,
@@ -19,10 +16,9 @@ CREATE TABLE agreements
 
 CREATE TABLE files
 (
-    id           BIGSERIAL PRIMARY KEY,
+    id           VARCHAR(350) PRIMARY KEY,
     name         VARCHAR(255) NOT NULL,
     type         VARCHAR(255) NOT NULL,
-    data         oid          NOT NULL,
     agreement_id BIGINT       NOT NULL
 );
 

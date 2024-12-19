@@ -23,3 +23,6 @@ security-user:
   password: ${ADMIN_PASSWORD}
 
 baseUrl: ${BASE_URL}
+
+path:
+  folder: ${FILES_FOLDER:agreement-registration-app/src/main/resources/agreement_files}

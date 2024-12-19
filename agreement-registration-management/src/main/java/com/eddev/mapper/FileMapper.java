@@ -12,7 +12,6 @@ import java.io.IOException;
 public interface FileMapper {
 
     @Mapping(target = "name", source = "originalFilename")
-    @Mapping(target = "data", source = "bytes")
     @Mapping(target = "type", source = "contentType")
     File toFile(MultipartFile multipartFile) throws IOException;
 
