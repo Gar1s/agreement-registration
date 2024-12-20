@@ -2,9 +2,9 @@ server:
   port: ${PORT:8080}
 spring:
   datasource:
-    url: ${URL}
-    username: ${USERNAME}
-    password: ${PASSWORD}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:
@@ -22,7 +22,7 @@ security-user:
   name: ${ADMIN_USERNAME}
   password: ${ADMIN_PASSWORD}
 
-baseUrl: ${BASE_URL}
+baseUrl: ${APP_URL}
 
 path:
-  folder: ${FILES_FOLDER:agreement-registration-app/src/main/resources/agreement_files}
+  folder: ${FILES_FOLDER:C:/Users/Eddie/Documents/agreements_files}
