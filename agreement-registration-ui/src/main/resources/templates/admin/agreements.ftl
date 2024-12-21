@@ -102,7 +102,7 @@
         <tbody>
         <#list list as agreement>
             <tr class="align-middle">
-                <th scope="row">${agreement.numeration}</th>
+                <th scope="row" title="${agreement.numeration}">${agreement.numeration?substring(15)}</th>
                 <td><a href="/admin/companies/${agreement.companyId}">${agreement.companyName}</a></td>
                 <td>${agreement.practiceType}</td>
                 <td>${agreement.companyAgreementDate.format(.globals.dateFormatter)}</td>
@@ -158,6 +158,7 @@
                 "startDate": "${agreement.startDate}",
                 "endDate": "${agreement.endDate}",
                 "studentInitials": "${agreement.studentInitials}",
+                "companyInitials": "${agreement.companyInitials}",
                 "numeration": "${agreement.numeration}"
             }<#if agreement?has_next>, </#if>
             </#list>

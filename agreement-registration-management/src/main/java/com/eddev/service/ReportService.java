@@ -42,6 +42,7 @@ public class ReportService {
         row.createCell(4).setCellValue("Дата угоди");
         row.createCell(5).setCellValue("Термін дії");
         row.createCell(6).setCellValue("Ініціали cтудента");
+        row.createCell(7).setCellValue("Ініціали керівника");
         for (Cell cell : row) {
             cell.setCellStyle(headerCellStyle);
         }
@@ -57,9 +58,10 @@ public class ReportService {
                     agreement.getStartDate().format(DATE_TIME_FORMATTER) + " - " +
                             agreement.getEndDate().format(DATE_TIME_FORMATTER));
             dataRow.createCell(6).setCellValue(agreement.getStudentInitials());
+            dataRow.createCell(7).setCellValue(agreement.getCompanyInitials());
             dataRowIndex++;
         }
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 8; i++) {
             sheet.autoSizeColumn(i);
         }
         return book;

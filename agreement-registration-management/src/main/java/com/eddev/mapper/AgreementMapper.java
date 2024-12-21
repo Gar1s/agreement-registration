@@ -13,6 +13,7 @@ public interface AgreementMapper {
 
     @Mapping(target = "companyName", source = "company.name")
     @Mapping(target = "companyId", source = "company.id")
+    @Mapping(target = "companyInitials", source = "company.initials")
     AgreementDto toDto(Agreement agreement);
 
     @Mapping(target = "companyDto", source = "company")

@@ -17,6 +17,7 @@ public class AgreementDto {
     private String numeration;
     private LocalDate companyAgreementDate;
     private String companyName;
+    private String companyInitials;
     private String companyId;
 
 }
