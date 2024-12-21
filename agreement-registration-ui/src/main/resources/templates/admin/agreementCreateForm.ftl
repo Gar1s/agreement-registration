@@ -64,7 +64,7 @@
             <div class="row align-items-center">
                 <label for="practiceType" class="col-2 p-0">Вид практики:</label>
                 <div class="col p-0">
-                    <input list="practiceTypes" class="form-select" id="practiceType" name="practiceType" placeholder="Виберіть зі списку">
+                    <input list="practiceTypes" class="form-select" id="practiceType" name="practiceType" placeholder="Виберіть зі списку" required>
                     <datalist id="practiceTypes">
                         <option value="Навчальна">
                         <option value="Виробнича">

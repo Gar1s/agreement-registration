@@ -25,4 +25,4 @@ security-user:
 baseUrl: ${APP_URL}
 
 path:
-  folder: ${FILES_FOLDER:C:/Users/Eddie/Documents/agreements_files}
+  folder: ${FILES_FOLDER:agreement-registration-app/src/main/resources/agreement_files}
