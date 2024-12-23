@@ -67,7 +67,7 @@ node_modules
 /dist
 
 # local env files
-agreement-registration-app/src/main/resources/.env
+.env
 .env.local
 .env.*.local
 
