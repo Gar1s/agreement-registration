@@ -18,19 +18,33 @@ git clone https://github.com/Gar1s/agreement-registration.git
 cd agreement-registration
 ```
 
-#### 2) Start project
+#### 2) Build project
 ```  
-mvn clean install  
+mvn clean install or 
+mvn clean package  
+```
+
+#### 3) Start project
+```  
 java <env variables: -DvariableName='value'> -jar <jar location>  
+```
+For this project(add .evn to the project and just start it):
+```
+java -jar agreement-registration-app/target/agreementregistrationapp-2.1.0.jar
 ```
 
 ### Environment variables:
-- ${URL} - url to database;
-- ${USERNAME} - db username;
-- ${PASSWORD} - db password;
-- ${ADMIN_USERNAME} - admin username;
-- ${ADMIN_PASSWORD} - admin password;
-- ${BASE_URL} - base url of the host.
+- ${DB_URL} - Database full url(jdbc:postgresql://localhost:5432/AgreementRegistration);
+- ${DB_USERNAME} - Database username;
+- ${DB_PASSWORD} - Database password;
+- ${ADMIN_USERNAME} - Admin username;
+- ${ADMIN_PASSWORD} - Admin password;
+- ${APP_URL} - App full url(http://localhost:8080).
+- ${PORT} - Server port.
+- ${FILES_FOLDER} - Path to files (C:/agreements_files)
+
+  For deploy:
+- ${LANG} - Specifying a locale(en_US.UTF-8).
 
 ### UI COMPONENTS
 * `Freemarker` as template engine
